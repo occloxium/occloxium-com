@@ -1,0 +1,38 @@
+@media only screen and (max-width: 749px){
+    main section#everydays {
+        .wrapper {
+            width: 101.8%;
+            margin-left: -1.8%;
+            margin-top: -1.8%;
+            li {
+                margin-left: 1.768172888015717%;
+                margin-top: 6px;
+                width: 48.23182711198428%;
+            }
+        }
+    }
+    .two-column {
+        .left {
+            width: 100%;
+        }
+        .right {
+            width: 100%;
+        }
+    }
+    nav.mobile {
+        margin-left: -75px;
+        margin-top: -75px;
+        width: calc(100% + 150px);
+        display: block;
+        a {
+            display: block;
+            border-bottom: none;
+            padding: 6px 0;
+            text-align: center;
+        }
+        padding-bottom: 24px;
+    }
+    nav:not(.mobile) {
+        display: none;
+    }
+}

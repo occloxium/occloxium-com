@@ -1,0 +1,14 @@
+{
+  "name": "occloxium.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {},
+  "author": "Alexander Bartolomey",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.5.0",
+    "gulp-sass": "^4.0.1"
+  }
+}
