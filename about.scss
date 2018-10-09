@@ -8,8 +8,13 @@ main {
     display: flex;
     flex-flow: row wrap;
     .left {
-        width: 46%;
-        position: relative;
+        @media only screen and (max-width: 769px){
+            width: 100%;
+        }
+        @media only screen and (min-width: 769px){
+            width: 46%;
+            position: relative;
+        }
         img {
             max-width: 360px;
             width: 100%;
@@ -20,8 +25,13 @@ main {
         }
     }
     .right {
-        margin-left: 4%;
-        width: 50%;
+        @media only screen and (max-width: 769px){
+            width: 100%;
+        }
+        @media only screen and (min-width: 769px){
+            margin-left: 4%;
+            width: 50%;
+        }
         h3 {
             font-family: "Roboto Mono", monospace;
             text-transform: uppercase;

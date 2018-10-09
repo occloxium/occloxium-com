@@ -1,41 +1,61 @@
 html {
-  height: 100%; }
+  height: 100%;
+  width: 100%;
+  position: absolute; }
 
 body {
   margin: 0;
-  min-height: 100%; }
+  height: 100%;
+  width: 100%;
+  position: relative; }
 
 .width-wrapper {
   max-width: 1200px;
-  margin: 16px auto 0;
-  padding: 75px 75px 0;
+  width: 92%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   height: 100%;
-  position: absolute;
   box-sizing: border-box; }
+  @media only screen and (max-width: 769px) {
+    .width-wrapper {
+      position: static;
+      padding: 75px 4% 0; } }
+  @media only screen and (min-width: 769px) {
+    .width-wrapper {
+      position: relative;
+      padding: 75px 75px 0; } }
 
-header {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: baseline; }
-  header .title {
-    flex-grow: 1;
-    text-transform: uppercase;
-    letter-spacing: -0.4px; }
-    header .title h5 {
-      font-size: 13px;
-      font-weight: 500; }
-  header nav {
-    margin-top: 16px;
+@media only screen and (max-width: 1440px) {
+  header {
+    position: block;
+    margin-bottom: 24px; } }
+
+@media only screen and (min-width: 1440px) {
+  header {
     display: flex;
-    flex-grow: 1;
-    flex-direction: row; }
-    header nav a {
-      font-size: 16px;
-      margin: 0 8px; }
-      header nav a.active {
-        border-bottom-color: #999; }
+    flex-flow: row wrap;
+    align-items: baseline;
+    padding-bottom: 32px; } }
+
+header .title {
+  flex-grow: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.4px; }
+  header .title h5 {
+    font-size: 13px;
+    font-weight: 500; }
+
+header nav {
+  margin-top: 16px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row; }
+  header nav a {
+    font-size: 16px;
+    margin: 0 8px; }
+    header nav a.active {
+      border-bottom-color: #999; }
 
 nav.mobile {
   display: none; }
@@ -107,7 +127,7 @@ footer {
   .inverted * {
     color: inherit !important; }
 
-@media only screen and (max-width: 749px) {
+@media only screen and (max-width: 769px) {
   main section#everydays .wrapper {
     width: 101.8%;
     margin-left: -1.8%;
@@ -117,19 +137,23 @@ footer {
       margin-top: 6px;
       width: 48.23182711198428%; }
   .two-column .left {
+    flex-grow: 1;
     width: 100%; }
   .two-column .right {
+    flex-grow: 1;
     width: 100%; }
   nav.mobile {
     margin-left: -75px;
-    margin-top: -75px;
     width: calc(100% + 150px);
     display: block;
     padding-bottom: 24px; }
     nav.mobile a {
       display: block;
-      border-bottom: none;
       padding: 6px 0;
-      text-align: center; }
+      text-align: center;
+      border-bottom: none; }
+      nav.mobile a.active {
+        text-decoration: underline;
+        text-decoration-color: #999; }
   nav:not(.mobile) {
     display: none; } }

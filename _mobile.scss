@@ -1,4 +1,4 @@
-@media only screen and (max-width: 749px){
+@media only screen and (max-width: 769px){
     main section#everydays {
         .wrapper {
             width: 101.8%;
@@ -13,22 +13,28 @@
     }
     .two-column {
         .left {
+            flex-grow: 1;
             width: 100%;
         }
         .right {
+            flex-grow: 1;
             width: 100%;
         }
     }
     nav.mobile {
         margin-left: -75px;
-        margin-top: -75px;
+        //margin-top: -75px;
         width: calc(100% + 150px);
         display: block;
         a {
             display: block;
-            border-bottom: none;
             padding: 6px 0;
             text-align: center;
+            border-bottom: none;
+            &.active {
+                text-decoration: underline;
+                text-decoration-color: #999;
+            }
         }
         padding-bottom: 24px;
     }
