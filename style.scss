@@ -261,6 +261,9 @@ footer {
             }
         }
     }
+    .loading-image.is-hidden {
+        display: none;
+    }
 }
 
 main.is-hidden {

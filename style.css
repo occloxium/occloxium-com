@@ -228,6 +228,8 @@ footer {
       vertical-align: middle; }
       .gallery-frame .content .actions .download::after {
         content: 'Download'; }
+  .gallery-frame .loading-image.is-hidden {
+    display: none; }
 
 main.is-hidden {
   overflow: hidden; }

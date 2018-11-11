@@ -5,10 +5,20 @@ $(() => {
     $(this).addClass('is-open');
     $('main').addClass('is-hidden');
     $('.gallery-frame').removeClass('is-hidden');
-    let url = $(this).attr('data-full-size-img');
+    $('.loading-image').removeClass('is-hidden');
+    var purl = $(this).attr('src'),
+      burl = purl.replace('/p/', '/b/'),
+      furl = purl.replace('/p/', '/').replace('jpg', 'png');
 
-    $('.gallery-frame .frame .img').css('background-image', `url(${url})`);
-    $('.gallery-frame .actions .download').attr('href', url);
+    let limg = $('<img>');
+    limg.on('load', () => {
+      $('.loading-image').addClass('is-hidden');
+      $('.gallery-frame .frame .img').css('background-image', `url(${furl})`);
+    });
+    limg.attr('src', furl);
+
+    $('.gallery-frame .frame .img').css('background-image', `url(${burl})`);
+    $('.gallery-frame .actions .download').attr('href', furl);
   };
   let closeGallery = function (e) {
     $('.is-open').removeClass('is-open');
