@@ -3,6 +3,8 @@ stages:
   - deploy
 
 build:
+  only:
+    - master
   image: docker:latest
   stage: build
   script: 
@@ -12,7 +14,20 @@ build:
   tags: 
     - occloxium-docker
 
+build-dev:
+  image: docker:latest
+  stage: build
+  script: 
+    - echo "$CI_JOB_TOKEN" | docker login registry.git.rwth-aachen.de --username gitlab-ci-token --password-stdin 
+    - docker build -t registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com:dev .
+    - docker push registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com:dev
+  tags: 
+    - occloxium-docker
+
+
 deploy: 
+  only: 
+    - master
   stage: deploy
   environment:
     name: deployment
