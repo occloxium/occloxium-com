@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box; }
+
 html {
   height: 100%;
   width: 100%;
@@ -166,19 +169,10 @@ footer {
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.87);
-  display: flex;
-  flex-direction: column; }
-  .gallery-frame .frame {
-    flex-grow: 1; }
-  .gallery-frame .actions {
-    padding: 16px;
-    margin: 0 15%;
-    background: rgba(0, 0, 0, 0.1);
-    color: #fff; }
-    .gallery-frame .actions .download::after {
-      content: 'Download'; }
-  .gallery-frame .prev, .gallery-frame .next, .gallery-frame .close {
+  background: rgba(0, 0, 0, 0.87); }
+  .gallery-frame .prev,
+  .gallery-frame .next,
+  .gallery-frame .close {
     background: rgba(0, 0, 0, 0.1);
     height: 66px;
     width: 66px;
@@ -189,8 +183,11 @@ footer {
     color: #fff;
     font-size: 50px;
     padding: 8px;
+    z-index: 12;
     cursor: pointer; }
-    .gallery-frame .prev i, .gallery-frame .next i, .gallery-frame .close i {
+    .gallery-frame .prev i,
+    .gallery-frame .next i,
+    .gallery-frame .close i {
       font-size: inherit; }
   .gallery-frame .close {
     top: 0;
@@ -201,6 +198,36 @@ footer {
   .gallery-frame .next {
     right: 0;
     top: 50%; }
+  .gallery-frame.is-hidden {
+    display: none; }
+  .gallery-frame .content {
+    height: 100%;
+    /* position: absolute; */
+    display: flex;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    /* align-content: center; */ }
+    .gallery-frame .content .img {
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      z-index: 10;
+      position: relative;
+      display: block;
+      flex-grow: 1;
+      width: 100%;
+      margin: 32px auto; }
+    .gallery-frame .content .actions {
+      padding: 16px;
+      margin: 0 15%;
+      background: rgba(0, 0, 0, 0.1);
+      color: #fff;
+      width: 100%;
+      vertical-align: middle; }
+      .gallery-frame .content .actions .download::after {
+        content: 'Download'; }
 
 main.is-hidden {
   overflow: hidden; }

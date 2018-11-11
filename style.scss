@@ -1,62 +1,79 @@
 @import 'colors';
+
+* {
+    box-sizing: border-box;
+}
+
 html {
     height: 100%;
     width: 100%;
     position: absolute;
 }
+
 body {
     margin: 0;
     height: 100%;
     width: 100%;
     position: relative;
 }
+
 .width-wrapper {
     max-width: 1200px;
     width: 92%;
     margin: 0 auto;
-    
+
     display: flex;
     flex-direction: column;
     height: 100%;
-    @media only screen and (max-width: 769px){
+
+    @media only screen and (max-width: 769px) {
         position: static;
         padding: 75px 4% 0;
     }
-    @media only screen and (min-width: 769px){
+
+    @media only screen and (min-width: 769px) {
         position: relative;
         padding: 75px 75px 0;
     }
+
     box-sizing: border-box;
 }
+
 header {
-    @media only screen and (max-width: 1440px){
+    @media only screen and (max-width: 1440px) {
         position: block;
         margin-bottom: 24px;
     }
-    @media only screen and (min-width: 1440px){
+
+    @media only screen and (min-width: 1440px) {
         display: flex;
         flex-flow: row wrap;
         align-items: baseline;
         padding-bottom: 32px
     }
+
     .title {
         flex-grow: 1;
         text-transform: uppercase;
         letter-spacing: -0.4px;
+
         h5 {
             font-size: 13px;
             font-weight: 500;
         }
     }
+
     nav {
         margin-top: 16px;
         display: flex;
         flex-grow: 1;
         flex-direction: row;
+
         a {
             &.active {
                 border-bottom-color: #999;
             }
+
             font-size: 16px;
             margin: 0 8px;
         }
@@ -72,6 +89,7 @@ nav.mobile {
     position: relative;
     margin: 48px 0;
     padding-top: 56.25%;
+
     iframe {
         position: absolute;
         left: 0;
@@ -85,18 +103,22 @@ nav.mobile {
 
 main {
     flex-grow: 1;
+
     section#everydays {
         box-sizing: border-box;
         padding: 24px 0;
+
         h3 {
             margin: 24px 0;
         }
+
         .wrapper {
             display: flex;
             flex-flow: row wrap;
             width: 101.8%;
             margin-left: -1.8%;
             margin-top: -1.8%;
+
             li {
                 display: block;
                 margin-left: 1.768172888015717%;
@@ -104,6 +126,7 @@ main {
                 width: 31.56516044531762%;
                 align-self: flex-start;
                 list-style: none outside none;
+
                 img {
                     width: 100%;
                     height: auto;
@@ -116,6 +139,7 @@ main {
 footer {
     padding: 1em 2em;
     text-align: center;
+
     &::before {
         content: '';
         width: 150px;
@@ -124,6 +148,7 @@ footer {
         height: 1px;
         left: calc(50% - 75px);
     }
+
     a {
         display: inline-block;
         font-size: 1em;
@@ -143,6 +168,7 @@ footer {
     min-height: 100%;
     background: #222;
     color: #fff;
+
     * {
         color: inherit !important;
     }
@@ -159,25 +185,12 @@ footer {
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba(0,0,0,0.87);
-    display: flex;
-    flex-direction: column;
-    .frame {
-        flex-grow: 1;
-    }
+    background: rgba(0, 0, 0, 0.87);
 
-    .actions {
-        padding: 16px;
-        margin: 0 15%;
-        background: rgba(0,0,0,0.1);
-        color: #fff;
-        .download::after {
-            content: 'Download'
-        }
-    }
-
-    .prev, .next, .close {
-        background: rgba(0,0,0,0.1);
+    .prev,
+    .next,
+    .close {
+        background: rgba(0, 0, 0, 0.1);
         height: $icon-font-size + 16px;
         width: $icon-font-size + 16px;
         line-height: 1;
@@ -187,14 +200,16 @@ footer {
         color: #fff;
         font-size: $icon-font-size;
         padding: 8px;
+        z-index: 12;
         cursor: pointer;
+
         i {
             font-size: inherit;
         }
     }
 
     .close {
-        top: 0; 
+        top: 0;
         right: 0;
     }
 
@@ -208,6 +223,44 @@ footer {
         top: 50%;
     }
 
+    &.is-hidden {
+        display: none;
+    }
+
+    .content {
+        height: 100%;
+        /* position: absolute; */
+        display: flex;
+        align-self: center;
+        align-items: center;
+        flex-direction: column;
+        /* align-content: center; */
+
+        .img {
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            z-index: 10;
+            position: relative;
+            display: block;
+            flex-grow: 1;
+            width: 100%;
+            margin: 32px auto;
+        }
+
+        .actions {
+            padding: 16px;
+            margin: 0 15%;
+            background: rgba(0, 0, 0, 0.1);
+            color: #fff;
+            width: 100%;
+            vertical-align: middle;
+            .download::after {
+                content: 'Download'
+            }
+        }
+    }
 }
 
 main.is-hidden {
