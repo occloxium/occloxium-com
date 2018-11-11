@@ -157,3 +157,50 @@ footer {
         text-decoration-color: #999; }
   nav:not(.mobile) {
     display: none; } }
+
+.gallery-frame {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: column; }
+  .gallery-frame .frame {
+    flex-grow: 1; }
+  .gallery-frame .actions {
+    padding: 16px;
+    margin: 0 15%;
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff; }
+    .gallery-frame .actions .download::after {
+      content: 'Download'; }
+  .gallery-frame .prev, .gallery-frame .next, .gallery-frame .close {
+    background: rgba(0, 0, 0, 0.1);
+    height: 66px;
+    width: 66px;
+    line-height: 1;
+    position: absolute;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 50px;
+    padding: 8px;
+    cursor: pointer; }
+    .gallery-frame .prev i, .gallery-frame .next i, .gallery-frame .close i {
+      font-size: inherit; }
+  .gallery-frame .close {
+    top: 0;
+    right: 0; }
+  .gallery-frame .prev {
+    left: 0;
+    top: 50%; }
+  .gallery-frame .next {
+    right: 0;
+    top: 50%; }
+
+main.is-hidden {
+  overflow: hidden; }
