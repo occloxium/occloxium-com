@@ -4,4 +4,4 @@ services:
   occloxium.com:
     image: registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com
     ports:
-      - 8081:80
+      - 7000:80
