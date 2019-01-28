@@ -2,6 +2,7 @@ version: '3.2'
 
 services:
   occloxium:
+    container_name: occloxium.com
     image: registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com
     ports:
       - 7000:80
