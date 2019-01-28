@@ -1,7 +1,13 @@
-version: '2.1'
+version: '3.2'
 
 services:
-  occloxium.com:
+  occloxium:
     image: registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com
     ports:
       - 7000:80
+    networks:
+      - occloxium
+
+networks:
+  occloxium:
+    driver: bridge
