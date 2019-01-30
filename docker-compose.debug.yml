@@ -1,9 +1,0 @@
-version: '2.1'
-
-services:
-  occloxium.com:
-    image: registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - 7000:80
