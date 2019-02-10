@@ -1,0 +1,37 @@
+.oc-masonry-image-list {
+  @media screen and (max-width: 481px){
+    @include mdc-image-list-masonry-columns(1);
+  }
+  @media screen and (max-width: 768px){
+    @include mdc-image-list-masonry-columns(2);
+  }
+  @media screen and (min-width: 768px){
+    @include mdc-image-list-masonry-columns(3);
+  }
+}
+.container {
+  padding: 24px 12px;
+
+  .embed {
+    width: 100%;
+    position: relative;
+    margin: 48px 0;
+    padding-top: 56.25%;
+
+    iframe {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+  }
+
+  }
+  h3 {
+      font-family: "Roboto Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+  }
+}
