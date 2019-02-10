@@ -1,0 +1,61 @@
+
+$mdc-typography-styles-headline1: (
+  font-family: unquote("Major Mono Display, monospace;"),
+  font-size: 3em,
+  line-height: 1,
+  text-transform: uppercase
+);
+$mdc-typography-styles-headline2: (
+  font-family: unquote("Roboto Mono, monospace;"),
+  font-size: 1em,
+  line-height: 1
+);
+$mdc-typography-font-family: 'Roboto', sans-serif;
+
+@import "@material/typography/mdc-typography";
+@import "@material/elevation/mdc-elevation";
+@import "@material/image-list/mdc-image-list";
+@import "@material/list/mdc-list";
+@import "@material/card/mdc-card";
+
+body {
+  background: rgba(232,232,232,1);
+  margin: 0;
+}
+
+@import "header";
+@import "footer";
+
+.hidden-mark {
+  &::after {
+      color: #999;
+  }
+  &.hidden-mark--dot::after {
+      content: "\2022";
+  }
+  &.hidden-mark--return::after {
+      content: "\AC";
+  }
+}
+
+main {
+  max-width: 768px;
+  margin: 0 auto 42px;
+  article {
+    display: none;
+  }
+}
+
+#about {
+  /* @dev */
+  display: none;
+  @import "about";
+}
+
+#work {
+  @import "work";
+}
+
+#social {
+  @import "social";
+}
