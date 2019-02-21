@@ -3,19 +3,32 @@ let loadedRoutes = [];
 function Router(availableRoutes) {
   this.loadedRoutes = [];
   this.availableRoutes = availableRoutes;
+  this.helpers = {
+    __http_get: (url) => {
+      return new Promise((resolve, reject) => {
+        let req = new XMLHttpRequest();
+        req.open('GET', url, true);
+        req.onload = () => {
+          if(req.status >= 200 && req.status < 400){
+            resolve(req.responseText);
+          }
+        };
+        req.onerror = () => {
+          reject(req.statusText);
+        };
+      });
+    }
+  };
   this.loadAll = () => {
     return new Promise((resolve, reject) => {
       Promise.all(this.availableRoutes.map((r) => {
         return new Promise((resolve, reject) => {
           if (!this.loadedRoutes.includes(r)) {
             this.loadedRoutes.push(r);
-            $.ajax({
-              method: 'get',
-              url: `/components/${r}.component.html`,
-            }).done((data) => {
+            this.helpers.__http_get(`/components/${r}.component.html`,).then((data) => {
               $('main').append($(data).fadeOut());
               resolve($(`main #${r}`));
-            }).fail((err) => {
+            }).catch((err) => {
               console.error(`Failed to load component "${r}"`);
               reject(err);
             });
@@ -31,17 +44,15 @@ function Router(availableRoutes) {
       });
     });
   };
+  
   this.loadSinglePage = (route) => {
     return new Promise((resolve, reject) => {
       if (!this.loadedRoutes.includes(route)) {
         this.loadedRoutes.push(route);
-        $.ajax({
-          method: 'get',
-          url: `/components/${route}.component.html`,
-        }).done((data) => {
+        this.helpers.__http_get(`/components/${route}.component.html`).then((data) => {
           $('main').append($(data).fadeOut());
           resolve($(`main #${route}`));
-        }).fail((err) => {
+        }).catch((err) => {
           console.error(`Failed to load component "${route}"`);
           reject(err);
         });
