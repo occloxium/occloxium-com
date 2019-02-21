@@ -1,6 +1,6 @@
-import {DOMHelper} from 'DOMHelper';
+import {DOMHelper} from './DOMHelper';
 
-xport class Router {
+export class Router {
   constructor(availableRoutes) {
     this.loadedRoutes = [];
     this.transitionTime = 500;
@@ -27,8 +27,8 @@ xport class Router {
         return new Promise((resolve, reject) => {
           if (!this.loadedRoutes.includes(r)) {
             this.loadedRoutes.push(r);
-            this.helpers.get(`/components/${r}.component.html`).then((data) => {
-              DOMHelper.append(data);
+            this.get(`/components/${r}.component.html`).then((data) => {
+              DOMHelper.append('main', data);
               DOMHelper.hide(`main #${r}`);
               resolve(document.querySelector(`main #${r}`));
             }).catch((err) => {
@@ -51,8 +51,8 @@ xport class Router {
     return new Promise((resolve, reject) => {
       if (!this.loadedRoutes.includes(route)) {
         this.loadedRoutes.push(route);
-        this.helpers.get(`/components/${route}.component.html`).then((data) => {
-          DOMHelper.append(data);
+        this.get(`/components/${route}.component.html`).then((data) => {
+          DOMHelper.append('main', data);
           DOMHelper.hide(`main #${route}`);
           resolve(document.querySelector(`main #${route}`));
         }).catch((err) => {
