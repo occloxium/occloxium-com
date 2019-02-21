@@ -61,7 +61,7 @@ export class Router {
         });
       }
       else {
-        resolve(document.querySelector(`main #${r}`));
+        resolve(document.querySelector(`main #${route}`));
       }
     });
   }
@@ -87,5 +87,4 @@ export class Router {
       this.loadedRoutes.splice(this.loadedRoutes.indexOf(route), 1);
     }
   }
-  ;
 }
