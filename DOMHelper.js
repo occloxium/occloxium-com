@@ -55,15 +55,25 @@ export class DOMHelper {
    * Shows a previously hidden element by removing the 'is-hidden' class
    * The CSS class HAS TO BE defined in your stylesheets
    */
-  static show(el) {
-    DOMHelper.query(el).classList.remove('is-hidden');
+  static show(el, time = 0) {
+    let element = DOMHelper.query(el);
+    element.classList.add('is-animating');
+    setTimeout(() => {
+      element.classList.remove('is-animating');
+      element.classList.remove('is-hidden');
+    }, time);
   }
   /**
    * Hides an element by adding the 'is-hidden' class
    * The CSS class HAS TO BE defined in your stylesheets
    */
-  static hide(el) {
-    DOMHelper.query(el).classList.add('is-hidden');
+  static hide(el, time = 0) {
+    let element = DOMHelper.query(el);
+    element.classList.add('is-animating');
+    element.classList.add('is-hidden');
+    setTimeout(() => {
+      element.classList.remove('is-animating');
+    }, time);
   }
   static click(el) {
     let event = document.createEvent('HTMLEvents');
@@ -74,52 +84,74 @@ export class DOMHelper {
    * Fades in a previously hidden element with CSS classes
    * @see DOMHelper.hide()
    * @param {string|Element} el element to fade in
+   * @returns {Promise<Element>} Promise with DOM element that was animated
    */
   static fadeIn(el) {
-    let element = DOMHelper.query(el);
-    element.classList.remove('is-hidden');
-    element.classList.add('is-fading-in');
-    setTimeout(() => {
+    return new Promise((resolve) => {
+      let element = DOMHelper.query(el);
+      element.classList.remove('is-hidden');
+      element.classList.add('is-fading-in');
+      element.classList.add('is-animating');
+      setTimeout(() => {
+        resolve(element);
+      }, DOMHelper.getTransitionTime());
+    }).then((element) => {
       element.classList.remove('is-fading-in');
-    }, DOMHelper.getTransitionTime());
+      element.classList.remove('is-animating');
+    });
   }
   /**
    * Fades out an element and adds the 'is-hidden' class afterwards
    * @see DOMHelper.hide()
    * @param {string|Element} el element to fade out
+   * @returns {Promise<Element>} Promise with DOM element that was animated
    */
   static fadeOut(el) {
-    let element = DOMHelper.query(el);
-    element.classList.add('is-fading-out');
-    setTimeout(() => {
+    return new Promise((resolve) => {
+      let element = DOMHelper.query(el);
+      element.classList.add('is-fading-out', 'is-animating', 'is-hidden');
+      setTimeout(() => {
+        resolve(element);
+      }, DOMHelper.getTransitionTime());
+    }).then((element) => {
       element.classList.remove('is-fading-out');
-      element.classList.add('is-hidden');
-    }, DOMHelper.getTransitionTime());
+      element.classList.remove('is-animating');
+      
+    });
   }
   /**
-   * Slides down a previously hidden element with CSS classes
+   * Slides up a previously hidden element with CSS classes
    * @see DOMHelper.hide()
-   * @param {string|Element} el element to slide down
+   * @param {string|Element} el element to slide down   
+   * @param {number} time time taken to slide up element
+   * @returns {Promise<Element>} Promise with DOM element that was animated
    */
-  static slideDown(el) {
-    let element = DOMHelper.query(el);
-    element.classList.remove('is-hidden');
-    element.classList.add('is-sliding-down');
-    setTimeout(() => {
-      element.classList.remove('is-sliding-down');
-    }, DOMHelper.getTransitionTime());
+  static slideUp(el, time = 0) {
+    return new Promise((resolve) => {
+      let element = DOMHelper.query(el);
+      // element.classList.remove('is-hidden');
+      setTimeout(() => {
+        resolve(element);
+      }, time);
+    }).then((element) => {
+
+    });
   }
   /**
-   * slides up an element and adds the 'is-hidden' class afterwards
+   * slides down an element and adds the 'is-hidden' class afterwards
    * @see DOMHelper.hide()
-   * @param {string|Element} el element to slide up
+   * @param {string|Element} el element to slide up   
+   * @param {number} time time taken to slide up element
+   * @returns {Promise<Element>} Promise with DOM element that was animated
    */
-  static slideUp(el) {
-    let element = DOMHelper.query(el);
-    element.classList.add('is-sliding-up');
-    setTimeout(() => {
-      element.classList.remove('is-sliding-up');
-      element.classList.add('is-hidden');
-    }, DOMHelper.getTransitionTime());
+  static slideDown(el, time = 0) {
+    return new Promise((resolve) => {
+      let element = DOMHelper.query(el);
+      setTimeout(() => {
+        resolve(element);
+      }, time);
+    }).then((element) => {
+      // element.classList.add('is-hidden');
+    });
   }
 }
