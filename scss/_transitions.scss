@@ -1,6 +1,6 @@
-$transition-time: 500ms !default;
+$transition-time: 200ms !default;
 $transition-curve: cubic-bezier(.4, 0, .2, 1) !default;
-$slide-down-time: 150ms !default;
+$slide-down-time: 350ms !default;
 $slide-up-time: 350ms !default;
 
 @keyframes fade-out {
@@ -19,35 +19,43 @@ $slide-up-time: 350ms !default;
     opacity: 1;
   }
 }
-@keyframes slide-up {
+@keyframes shrink {
   from {
-    height: auto;
+    transform: scale(1);
   }
   to {
-    height: 0px;
+    transform: scale(0);
+  }
+}
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
   }
 }
 @keyframes slide-down {
   from {
-    height: 0px;
+    transform: translateY(0%);
   }
   to {
-    height: auto;
+    transform: translateY(100%);
   }
 }
-
 .is-hidden {
+  // display: none;
+  opacity: 0;
+}
+article.is-hidden,
+.overlay.is-hidden {
   display: none;
-}
-.is-fading-in {
-  animation: fade-in $transition-time $transition-curve;
-}
-.is-fading-out {
-  animation: fade-out $transition-time $transition-curve;
-}
-.is-sliding-up {
-  animation: slide-up $slide-up-time $transition-curve;
-}
-.is-sliding-down {
-  animation: slide-down $slide-down-time $transition-curve;
 }

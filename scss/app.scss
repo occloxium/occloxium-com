@@ -10,7 +10,7 @@ $mdc-typography-styles-headline2: (
   font-size: 1em,
   line-height: 1
 );
-$mdc-typography-font-family: 'Roboto', sans-serif;
+$mdc-typography-font-family: 'Roboto Mono', monospace;
 
 @import "@material/typography/mdc-typography";
 @import "@material/elevation/mdc-elevation";

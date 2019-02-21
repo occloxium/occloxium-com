@@ -1,56 +1,57 @@
-@import "@material/animation/functions";
+@import "transitions";
+@import "colors";
 
-@keyframes slide-in {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
+.overlay {
+  // &.is-animating {
+  //   &.is-fading-in {
+  //     animation: fade-in $transition-time $transition-curve;
+  //   }
+  //   &.is-fading-out {
+  //     animation: fade-out $transition-time $transition-curve;
+  //   }
+  // }
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.87);
+  z-index: 9;
+  opacity: 1;
+  transition: opacity $transition-time $transition-curve;
+  &:not(.is-hidden){
+    animation: fade-in $transition-time $transition-curve;
   }
+  &.is-hidden {
+    animation: fade-out $transition-time $transition-curve;
+  }
+}
 
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-@keyframes slide-out {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-@keyframes rotate-to {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(90deg);
-  }
-}
-@keyframes rotate-back {
-  from {
-    transform: rotate(90deg);
-  }
-  to {
-    transform: rotate(0deg);
+.fab {
+  position: fixed;
+  bottom: 32px;
+  width: 100%;
+  z-index: 99;
+  button {
+    background: #fff;
+    height: 48px;
+    width: 48px;
+    border: none;
+    border-radius: 50%;
+    margin: 0 auto;
+    outline: none;
+    display: block;
+    animation: grow $transition-time $transition-curve;
+    transform: scale(1);
+    &.is-hidden {
+      opacity: 1;
+      transform: scale(0);
+      animation: shrink $transition-time $transition-curve;
+    }
+    i {
+      line-height: 1.5;
+    }
   }
 }
 
@@ -64,75 +65,21 @@ footer {
   left: 0;
   right: 0;
   margin: 0 auto;
-
-  .inner {
-    position: relative;
-    z-index: 100;
-    background: #fff;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    border: solid 1px rgba(0, 0, 0, 0.2);
-  }
-
-  &.is-collapsed {
-    nav {
-      display: none;
-      animation: mdc-animation-exit-temporary(/* $name: */ slide-out, /* $duration: */ 350ms);
-    }
-    .overlay {
-      animation: mdc-animation-exit-temporary(/* $name: */ fade-out, /* $duration: */ 350ms);
-    }
-    button {
-      //animation: mdc-animation-exit-temporary(rotate-back, 150ms);
-      i.material-icons {
-        transition: all 100ms $mdc-animation-acceleration-curve-timing-function;
-        background: rgba(0,0,0,0);
-      }
-    }
-  }
-
-  &.is-static {
-    nav {
-      display: block;
-    }
-  }
-
-  &.is-expanded {
-    nav {
-      display: block;
-      animation: mdc-animation-enter(/* $name: */ slide-in, /* $duration: */ 350ms);
-    }
-    .overlay {
-      animation: mdc-animation-enter(/* $name: */ fade-in, /* $duration: */ 350ms);
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.87);
-      z-index: 9;
-    }
-    button {
-      //animation: mdc-animation-exit-permanent(rotate-to, 350ms);
-      i.material-icons {
-        transition: all 100ms $mdc-animation-acceleration-curve-timing-function;
-        background: rgba(0,0,0,0.5);
-        color: transparent;
-        font-size: 8px;
-        border-radius: 16px;
-        width: 48px;
-      }
-    }
-  }
-
+  z-index: 100;
+  background: #fff;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  // border: solid 1px rgba(0, 0, 0, 0.2);
+ 
   button {
+    transition: all $transition-time $transition-curve;
     display: block;
     margin: 0 auto;
     padding: 12px 0 6px;
     border: none;
     outline: none;
     background: none;
+    height: 48px;
     i.material-icons {
       text-align: center;
     }
@@ -140,27 +87,26 @@ footer {
 
   nav {
     padding: 0 32px;
-
     li {
+      
       display: block;
       margin: 8px 0 8px 0;
       line-height: 2;
-      font-weight: bold;
       text-transform: uppercase;
       color: #121212;
       a {
         &.anchor {
-          &--about i {
-            color: #121212;
+          &--about {
+            color: $red;
           }
-          &--work i {
-            color: #121212;
+          &--work {
+            color: $pink;
           }
-          &--social i {
-            color: #121212;
+          &--social {
+            color: $purple;
           }
-          &--zoomoid i {
-            color: #121212;
+          &--zoomoid {
+            color: $deep-purple;
             
           }
         }
@@ -171,19 +117,43 @@ footer {
         &.is-active {
           background: rgba(214, 214, 214, 1);
           border-radius: 5px;
+          font-weight: bold;
         }
         vertical-align: bottom;
         text-decoration: none;
         width: auto;
         font-size: 1.2em;
         padding: 12px 12px 8px 12px;
+        letter-spacing: 0.1em;
 
-        &:link,
-        &:visited {
-          color: inherit;
-        }
       }
     }
 
   }
+
+
+  &:not(.is-collapsed){ 
+    button {
+      i.material-icons {
+        background: rgba(0,0,0,0.8);
+        color: transparent;
+        font-size: 8px;
+        border-radius: 16px;
+        width: 48px;
+      }
+    }
+    
+  }
+  animation: slide-up $slide-down-time $transition-curve;
+  transform: translateY(0%);
+  &.is-collapsed {
+    button {
+      i.material-icons {
+        background: rgba(0,0,0,0);
+      }
+    }
+    transform: translateY(100%);
+    animation: slide-down $slide-up-time $transition-curve;
+  }
+
 }

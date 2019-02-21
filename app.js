@@ -1,16 +1,14 @@
-// import {MDCComponent, MDCFoundation} from '@material/base';
-// import {MDCList} from '@material/list';
-// import {MDCRipple} from '@material/ripple';
-// const list = new MDCList(document.querySelector('.mdc-list'));
-// const listItemRipples = list.listElements.map((listItemEl) => new
-// MDCRipple(listItemEl));
+import {MDCComponent, MDCFoundation} from '@material/base';
+import {MDCList} from '@material/list';
+import {MDCRipple} from '@material/ripple';
 
 import {DOMHelper} from './DOMHelper';
 import {Router} from './Router';
 
 (() => {
   let footer = document.querySelector('footer'),
-    nav = document.querySelector('footer nav');
+    nav = document.querySelector('footer nav'),
+    overlay = document.querySelector('.overlay');
   if (!location.hash) {
     location.hash = '#about';
   }
@@ -26,44 +24,43 @@ import {Router} from './Router';
   // a valid route, just substitute it with the first route available
   router.loadSinglePage(location.hash.substr(1)).then((el) => {
     DOMHelper.fadeIn(el);
+    document.querySelector(`footer a[for="${location.hash}"]`).classList.add('is-active');
   }).catch((err) => {
     console.error(err);
     router.discardAllRoutes();
     document.querySelector('main').innerHTML = '<h3>Oh no!</h3><p>Unfortunately an error has occured. Please try again later.</p>';
   });
-  
-  document.querySelector(`footer a[for="${location.hash}"]`).classList.add('is-active');
-  DOMHelper.slideUp('footer nav');
 
-  document.querySelector('footer button').addEventListener('click', () => {
-    footer.classList.add('is-animating');
-    footer.classList.remove('is-finished');
+  DOMHelper.slideUp(footer, 0);
+  DOMHelper.hide(overlay);
+  document.querySelector('.fab button').addEventListener('click', () => {
+    DOMHelper.hide('.fab button', 500);
     if(footer.classList.contains('is-collapsed')){
-      DOMHelper.slideDown(nav);
-      setTimeout(() => {
-        footer.classList.add('is-expanded');
-        footer.classList.remove('is-collapsed');
-      }, 150);
-    } else {
-      DOMHelper.slideUp(nav);
-      setTimeout(() => {
-        footer.classList.add('is-collapsed');
-        footer.classList.remove('is-expanded');
-      }, 350);
+      footer.classList.remove('is-collapsed');
+      Promise.all([
+        DOMHelper.slideUp(footer),
+        DOMHelper.fadeIn(overlay),
+      ]);
     }
-    setTimeout(() => {
-      footer.classList.add('is-finished');
-      footer.classList.remove('is-animating');
-    }, 350);
+  });
+  document.querySelector('footer button').addEventListener('click', () => {
+    DOMHelper.show('.fab button', 500);
+    if(!footer.classList.contains('is-collapsed')){
+      footer.classList.add('is-collapsed');
+      Promise.all([
+        DOMHelper.slideDown(footer),
+        DOMHelper.fadeOut(overlay),
+      ]);
+    }
   });
   document.querySelectorAll('footer a').forEach((e) => {
     e.addEventListener('click', (e) => {
       document.querySelector('footer a.is-active').classList.remove('is-active');
-      DOMHelper.fadeOut('main article');
-      // e.target.('is-active');
+      DOMHelper.fadeOut(location.hash);
       setTimeout(() => {
         router.loadSinglePage(location.hash.substr(1)).then((el) => {
           DOMHelper.fadeIn(el);
+          document.querySelector(`footer a[for="${location.hash}"]`).classList.add('is-active');
         }).catch((err) => {
           console.error(err);
           Router.discardAllRoutes();
@@ -75,14 +72,13 @@ import {Router} from './Router';
         window.scrollTo({
           top: 0
         });
-      }, 5);
+      }, 0);
     });
   });
-  document.querySelector('footer .overlay').addEventListener('click', () => {
-    DOMHelper.slideUp(nav);
-    setTimeout(() => {
-      footer.classList.add('is-collapsed');
-      footer.classList.remove('is-expanded');
-    }, 350);
+  document.querySelector('.overlay').addEventListener('click', () => {
+    DOMHelper.slideUp(nav, 350);
+    footer.classList.add('is-collapsed');
+    DOMHelper.show('.fab button', 500);
+    DOMHelper.fadeOut(overlay);
   });
 })();
