@@ -1,3 +1,4 @@
+@import "../node_modules/rfs/scss";
 
 $mdc-typography-styles-headline1: (
   font-family: unquote("Major Mono Display, monospace;"),
@@ -10,7 +11,8 @@ $mdc-typography-styles-headline2: (
   font-size: 1em,
   line-height: 1
 );
-$mdc-typography-font-family: 'Roboto Mono', monospace;
+
+$mdc-typography-font-family: 'Roboto', sans-serif;
 
 @import "@material/typography/mdc-typography";
 @import "@material/elevation/mdc-elevation";
