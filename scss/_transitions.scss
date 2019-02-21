@@ -1,0 +1,29 @@
+$transition-time: 500ms !default;
+$transition-curve: cubic-bezier(.4, 0, .2, 1) !default;
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.is-hidden {
+  display: none;
+}
+.is-fading-in {
+  animation: fade-in $transition-time $transition-curve;
+}
+.is-fading-out {
+  animation: fade-out $transition-time $transition-curve;
+}
