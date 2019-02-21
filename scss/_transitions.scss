@@ -1,5 +1,7 @@
 $transition-time: 500ms !default;
 $transition-curve: cubic-bezier(.4, 0, .2, 1) !default;
+$slide-down-time: 150ms !default;
+$slide-up-time: 350ms !default;
 
 @keyframes fade-out {
   from {
@@ -17,6 +19,22 @@ $transition-curve: cubic-bezier(.4, 0, .2, 1) !default;
     opacity: 1;
   }
 }
+@keyframes slide-up {
+  from {
+    height: auto;
+  }
+  to {
+    height: 0px;
+  }
+}
+@keyframes slide-down {
+  from {
+    height: 0px;
+  }
+  to {
+    height: auto;
+  }
+}
 
 .is-hidden {
   display: none;
@@ -26,4 +44,10 @@ $transition-curve: cubic-bezier(.4, 0, .2, 1) !default;
 }
 .is-fading-out {
   animation: fade-out $transition-time $transition-curve;
+}
+.is-sliding-up {
+  animation: slide-up $slide-up-time $transition-curve;
+}
+.is-sliding-down {
+  animation: slide-down $slide-down-time $transition-curve;
 }
