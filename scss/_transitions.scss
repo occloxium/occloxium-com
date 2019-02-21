@@ -1,0 +1,61 @@
+$transition-time: 200ms !default;
+$transition-curve: cubic-bezier(.4, 0, .2, 1) !default;
+$slide-down-time: 350ms !default;
+$slide-up-time: 350ms !default;
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes shrink {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+@keyframes slide-down {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+.is-hidden {
+  // display: none;
+  opacity: 0;
+}
+article.is-hidden,
+.overlay.is-hidden {
+  display: none;
+}

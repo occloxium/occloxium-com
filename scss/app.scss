@@ -10,7 +10,7 @@ $mdc-typography-styles-headline2: (
   font-size: 1em,
   line-height: 1
 );
-$mdc-typography-font-family: 'Roboto', sans-serif;
+$mdc-typography-font-family: 'Roboto Mono', monospace;
 
 @import "@material/typography/mdc-typography";
 @import "@material/elevation/mdc-elevation";
@@ -25,6 +25,7 @@ body {
 
 @import "header";
 @import "footer";
+@import "transitions";
 
 .hidden-mark {
   &::after {
@@ -43,14 +44,9 @@ main {
   margin: 0 auto 42px;
   padding-left: 12px;
   padding-right: 12px;
-  article {
-    display: none;
-  }
 }
 
 #about {
-  /* @dev */
-  display: none;
   @import "about";
 }
 
