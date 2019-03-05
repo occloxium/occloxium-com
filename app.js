@@ -18,13 +18,20 @@ import {Router} from './Router';
     'social',
     'privacy',
   ]);
+  const navigationItems = [
+    'about',
+    'work',
+    'social'
+  ];
   // its safe to assume that after this, no subpage is loaded,
   // thus we can load the one requested by location.hash
   // If we somehow corrupted the location hash, which is no longer
   // a valid route, just substitute it with the first route available
   router.loadSinglePage(location.hash.substr(1)).then((el) => {
     DOMHelper.fadeIn(el);
-    document.querySelector(`footer a[for="${location.hash}"]`).classList.add('is-active');
+    if(navigationItems.includes(location.hash.substr(1))){
+      document.querySelector(`footer a[for="${location.hash}"]`).classList.add('is-active');
+    }
   }).catch((err) => {
     console.error(err);
     router.discardAllRoutes();
@@ -60,7 +67,9 @@ import {Router} from './Router';
       setTimeout(() => {
         router.loadSinglePage(location.hash.substr(1)).then((el) => {
           DOMHelper.fadeIn(el);
-          document.querySelector(`footer a[for="${location.hash}"]`).classList.add('is-active');
+          if(navigationItems.includes(location.hash.substr(1))){
+            document.querySelector(`footer a[for="${location.hash}"]`).classList.add('is-active');
+          }
         }).catch((err) => {
           console.error(err);
           Router.discardAllRoutes();
