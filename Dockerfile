@@ -14,4 +14,4 @@ FROM nginx:alpine
 
 LABEL Name=occloxium.com Version=1.0.0
 
-COPY --from=builder /dist/* /usr/share/nginx/html/
+COPY --from=builder /dist /usr/share/nginx/html/
