@@ -133,7 +133,13 @@
     font-family: "Work Sans", sans-serif;
     font-weight: 600;
     letter-spacing: -1px;
-    font-size: 2em
+    font-size: 2em;
+    max-width: 500px;
+    margin: 1em auto 1em;
+  }
+  p {
+    max-width: 500px;
+    margin: auto;
   }
   .embed {
     width: 100%;

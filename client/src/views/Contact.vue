@@ -5,11 +5,6 @@
       <p class="">
         For any business inquiries or requests please contact me via email at
         <a href="mailto:alex@zoomoid.de">alex@zoomoid.de</a>.</p>
-      <p class="">
-        Since I'm obligated to give information about data protection and
-        privacy as well as legally binding contact &amp; ownership information,
-        here's where to find it: <a href="/privacy">Impressum</a>
-      </p>
       <h3 class="">Social Media</h3>
       <p class="">
         If you'd just like to stalk me on social media, there you go:
@@ -60,6 +55,7 @@
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     max-width: 768px;
+    padding-bottom: 120px
   }
   section {
     max-width: 450px;

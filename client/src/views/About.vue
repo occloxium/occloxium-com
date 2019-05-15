@@ -9,31 +9,30 @@
         About Me
       </h3>
       <p class="">
-        I currently study Computer Science at RWTH Aachen University, Germany, while compensating with
-        a lot of 3D art and sketches as well
-        as music production for the lack of creativity and expressiveness associated with studying a rather
-        theoretical
-        field.
+        I currently study Computer Science at RWTH Aachen University, Germany.
+        Trying to link my field of studies with my personal interests, I build
+        web pages and backend architectures that look beautiful on the outside
+        while solving any problem or need I'm facing at that time. Have a look a
+        at <a href="https://hub.occloxium.com/"
+        target="_blank">https://hub.occloxium.com/</a> for demos.
+      </p>
+      <p>
+        I specialize in application of Docker and Container Orchestration with
+        Continuous Deployment. Using microservices to build large-scale
+        platforms is something I'm actively participating in. If you are
+        interested in working with me, hit me up via e-mail.
       </p>
       <p class="">
-        With my rare free time, I contribute to several open-source projects, including a few web
-        projects and a
-        <a href="https://github.com/occloxium/Monoid">software synthesizer</a>.
-      </p>
-      <p class="">
-        I am doing a series of 3D renderings where I'm creating a new one each day. Some might call
-        this
-        <a href="https://www.instagram.com/beeple_crap/" target="_blank">"Everydays"</a> but since they
-        finish infrequently, I prefer to call them
-        <a href="https://www.instagram.com/occloxium/" target="_blank">"Anydays"</a>.
+        With the rest of the time, i pursue other artistic projects. Sometimes I
+        do <a href="/#/work">motion graphics</a>.
       </p>
       <p class="">
         Under the alias of
         <a href="https://www.zoomoid.de" target="_blank">zoomoid</a>, I produce electronic music, crawling
-        my way through the BPM scale. I've recently produced a complete album, available on all trending <a
-          href="https://open.spotify.com/album/2zF1wOwINENOR1fTGLqBEF?si=RlgSYU2cQwy3pn9BN0Y9Fw" target="_blank">platforms
-          for streaming</a> and, what I would be immensely grateful for, purchase &ndash;
-        but also to download for free, as with everything I do.
+        my way through the BPM scale. You can support my by streaming or buying
+        my music, but you may also just download it for free from my website, no
+        strings attached. Everything around that music project is also
+        completely self-made, stickers, cover art, website etc.
       </p>
     </div>
     </section>
