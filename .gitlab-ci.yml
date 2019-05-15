@@ -15,15 +15,16 @@ build:
     - occloxium-docker
 
 build-dev:
+  except:
+    - master
   image: docker:latest
   stage: build
   script: 
     - echo "$CI_JOB_TOKEN" | docker login registry.git.rwth-aachen.de --username gitlab-ci-token --password-stdin 
-    - docker build -t registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com:dev .
-    - docker push registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com:dev
+    - docker build -t registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com/experimental .
+    - docker push registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com/experimental:latest
   tags: 
     - occloxium-docker
-
 
 deploy: 
   only: 
@@ -35,5 +36,18 @@ deploy:
   script:
     - docker-compose down
     - docker-compose up -d
+  tags:
+    - occloxium-shell
+
+deploy-dev:
+  except: 
+    - master
+  stage: deploy
+  environment:
+    name: Staging
+    url: https://staging.occloxium.com
+  script:
+    - docker-compose -f staging.yml down
+    - docker-compose -f staging.yml up -d
   tags:
     - occloxium-shell
