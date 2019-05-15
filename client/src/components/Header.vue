@@ -32,7 +32,7 @@ header {
       text-transform: lowercase;
     }
   }
-  background: #121212;
+  background: #151515;
   padding: 2em 12px 0 12px;
 }
 </style>
