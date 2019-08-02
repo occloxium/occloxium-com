@@ -12,6 +12,8 @@ RUN npm run build
 # 2nd stage: lightweight alpine container
 FROM nginx:alpine
 
+RUN rm /etc/nginx/conf.d/default.conf
+
 # LABEL Name=occloxium.com Version=1.0.0
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/confd./default.conf
 COPY --from=builder /dist /usr/share/nginx/html/
