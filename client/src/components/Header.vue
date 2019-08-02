@@ -2,7 +2,7 @@
   <header>
     <div class="inner">
       <h1 class="">Alexander Bartolomey</h1>
-      <h2 class="">Art, Music, Coffee &amp; Programming</h2>
+      <h2 class="">Studying CS. Building stuff. Making music.</h2>
     </div>
   </header>
 </template>
@@ -12,27 +12,26 @@ header {
   .inner {
     max-width: 500px;
     margin: 0 auto;
-    color: #fff;
+    color: black;
     padding-bottom: 2em;
     h1 {
       //font-size: 2.5em;
-      font-family: "Major Mono Display", monospace;
-       font-size: 1.5em;
+      font-family: 'DM Sans', Helvetica, Arial, sans-serif;
+      font-size: 3em;
       line-height: 1;
-      text-transform: uppercase;
       margin: 0;
       line-height: 1;
       hyphens: auto;
     }
     h2 {
       margin: 0;
-      margin-top: 0.5em;
+      margin-top: 1em;
       line-height: 1;
       font-size: 1em;
       text-transform: lowercase;
     }
   }
-  background: #151515;
+  background: white;
   padding: 2em 12px 0 12px;
 }
 </style>

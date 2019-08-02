@@ -1,43 +1,19 @@
 <template>
   <div id="app">
     <Header />
-    <div id="nav">
-      <router-link to="/">
-        <i class="material-icons">
-          face
-        </i>
-        <span>About</span></router-link>
-      <router-link to="/work">
-        <i class="material-icons">
-          work
-        </i>
-        <span>Work</span></router-link>
-      <router-link to="/contact">
-        <i class="material-icons">
-          group
-        </i>
-        <span>Contact</span></router-link>
-    </div>
     <router-view />
   </div>
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Material+Icons|Major+Mono+Display|Poppins:300|Work+Sans:600');
+@import url('https://fonts.googleapis.com/css?family=Material+Icons|DM+Sans:400,500,700&display=swap');
 
 #app {
-  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-family: 'DM Sans', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgba(21,21,21,1);
+  color: rgba(0,0,0,1);
 }
-#nav {
-  max-width: 768px;
-  margin: 0 auto;
-  padding: 30px;
-  display: flex
-}
-
 #nav a {
   display: block;
   font-weight: bold;
@@ -60,7 +36,6 @@
 }
 
 body {
-  background: rgba(21,21,21,1);
   margin: 0;
   height: 100%;
 }
