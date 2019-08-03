@@ -12,22 +12,22 @@
         <i class="fab fa-spotify"></i>
       </a>
       <a
-        target="_blank" 
+        target="_blank"
         href="https://www.github.com/occloxium">
         <i class="fab fa-github"></i>
       </a>
       <a
-        target="_blank" 
+        target="_blank"
         href="https://www.instagram.com/zoomoid">
         <i class="fab fa-instagram"></i>
       </a>
       <a
-        target="_blank" 
+        target="_blank"
         href="https://www.soundcloud.com/zoomoid">
         <i class="fab fa-soundcloud"></i>
       </a>
       <a
-        target="_blank" 
+        target="_blank"
         href="https://www.youtube.com/channel/UCg0yVDwpB9QphFbsGnV-8tQ">
         <i class="fab fa-youtube"></i>
       </a>

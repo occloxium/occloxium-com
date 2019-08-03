@@ -24,7 +24,7 @@ body {
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
-import About from '@/views/About.vue';
+import About from '@/views/About.vue'
 export default {
   name: 'home',
   components: {
