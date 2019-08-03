@@ -5,6 +5,38 @@
         <img src="@/assets/alex.jpg">
       </div>
     </section>
+    <section class="limited-container" id="refs">
+      <a
+        target="_blank"
+        href="https://open.spotify.com/artist/6RRD9ulVsLuDIqFzuFvSL8?si=TnpbwVwxTiyG5E-yqNBQLw">
+        <i class="fab fa-spotify"></i>
+      </a>
+      <a
+        target="_blank" 
+        href="https://www.github.com/occloxium">
+        <i class="fab fa-github"></i>
+      </a>
+      <a
+        target="_blank" 
+        href="https://www.instagram.com/zoomoid">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a
+        target="_blank" 
+        href="https://www.soundcloud.com/zoomoid">
+        <i class="fab fa-soundcloud"></i>
+      </a>
+      <a
+        target="_blank" 
+        href="https://www.youtube.com/channel/UCg0yVDwpB9QphFbsGnV-8tQ">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a
+        target="_blank"
+        href="https://www.zoomoid.de/">
+        <img src="https://www.zoomoid.de/favicon.png" width="64" height="64">
+      </a>
+    </section>
     <div class="full-width-container">
       <Videos/>
     </div>
@@ -23,7 +55,7 @@
 }
 .full-width-container {
   max-width: auto;
-  width: 100vw;
+  width: 100%;
 }
 .image {
   img {
@@ -33,35 +65,26 @@
     display: block;
   }
 }
-
-.text {
-  max-width: 500px;
-  width: 100%;
-  margin: 0 auto;
-
-  h3 {
-    font-family: "DM Sans", sans-serif;
-    font-weight: 700;
-    font-size: 3em
-  }
-
-  p {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 2;
-    color: #222;
-
-    a {
-      border-bottom-color: #999;
-      color: inherit;
+#refs {
+  display: flex;
+  a {
+    flex-grow: 1;
+    text-align: center;
+    &:hover, &:active {
+      opacity: 1;
     }
+    opacity: 0.5;
+    transition: opacity ease 0.2s;
+    color: rgba(24,24,24,1);
+    font-size: 64px;
+    padding: 0 16px;
   }
 }
 </style>
 
 <script>
 import ImageList from '@/components/ImageList.vue'
-import Videos from "@/components/Videos.vue"
+import Videos from '@/components/Videos.vue'
 
 export default {
   components: {

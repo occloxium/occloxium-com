@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <router-view />
+    <About />
   </div>
 </template>
 
@@ -14,26 +14,6 @@
   -moz-osx-font-smoothing: grayscale;
   color: rgba(0,0,0,1);
 }
-#nav a {
-  display: block;
-  font-weight: bold;
-  color: #ffffff;
-  flex-grow: 1;
-  text-decoration: none;
-  outline: none;
-  &:hover, &:active {
-    color: #42b983;
-  }
-}
-
-#nav a i, #nav a span {
-  display: block;
-  text-align: center
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 
 body {
   margin: 0;
@@ -44,11 +24,12 @@ body {
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
-
+import About from '@/views/About.vue';
 export default {
   name: 'home',
   components: {
-    Header
+    Header,
+    About
   }
 }
 </script>
