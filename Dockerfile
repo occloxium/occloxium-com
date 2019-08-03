@@ -17,3 +17,5 @@ RUN rm /etc/nginx/conf.d/default.conf
 # LABEL Name=occloxium.com Version=1.0.0
 COPY nginx.conf /etc/nginx/confd./default.conf
 COPY --from=builder /dist /usr/share/nginx/html/
+
+RUN ls /usr/share/nginx/html

@@ -7,6 +7,8 @@ services:
     ports:
       - "7005:80"
     restart: always
+    volumes:
+      - /var/log/nginx/proxy:/var/log/nginx
 
 networks:
   default:
