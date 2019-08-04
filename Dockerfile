@@ -15,7 +15,7 @@ FROM nginx:alpine
 RUN rm /etc/nginx/conf.d/default.conf
 
 # LABEL Name=occloxium.com Version=1.0.0
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/sites-available/default.conf
 
 COPY --from=builder /dist /usr/share/nginx/html/
 
