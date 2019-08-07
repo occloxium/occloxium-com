@@ -35,7 +35,7 @@
         class="icon--zoomoid"
         target="_blank"
         href="https://www.zoomoid.de/">
-        <img src="https://www.zoomoid.de/favicon.png" width="64" height="64">
+        <img src="https://www.zoomoid.de/favicon.png" width="32" height="32">
       </a>
     </section>
     <div class="full-width-container">
