@@ -1,16 +1,20 @@
 <template>
 <div>
+  <h1>zoomoid - Wild World</h1>
   <div class="embed">
     <iframe src="https://player.vimeo.com/video/263726213" frameborder="0" allowfullscreen></iframe>
   </div>
+  <h1>zoomoid - Wild World (VIP Mix)</h1>
   <div class="embed">
     <iframe src="https://www.youtube.com/embed/LG7J5D6n78U" frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
+  <h1>zoomoid - Zukunft</h1>
   <div class="embed">
     <iframe src="https://www.youtube.com/embed/aoDXE9Wol0A" frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
+  <h1>zoomoid - Head In The Clouds</h1>
   <div class="embed">
     <iframe src="https://www.youtube.com/embed/lBmZLseIHGw" frameborder="0"
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -40,5 +44,14 @@ export default {
     height: 100%;
     width: 100%;
   }
+}
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.04em;
+  font-size: 32pt;
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0;
 }
 </style>

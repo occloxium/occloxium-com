@@ -2,7 +2,7 @@
   <header>
     <div class="inner">
       <h1>Alexander Bartolomey</h1>
-      <h2>Studying CS. Building software. Making music.</h2>
+      <h2>Full Stack Web Engineer.<br>DevOps Enthusiast.<br/>Master of Containers.<br/>Musician.</h2>
     </div>
   </header>
 </template>
@@ -10,27 +10,27 @@
 <style lang="scss" scoped>
 header {
   .inner {
-    max-width: 500px;
+    max-width: 768px;
     margin: 0 auto;
     color: black;
-    padding-bottom: 2em;
+    padding: 2em 1em;
     h1 {
       //font-size: 2.5em;
-      font-family: 'DM Sans', Helvetica, Arial, sans-serif;
-      font-size: 4em;
+      font-size: 64pt;
       line-height: 1;
       margin: 0;
-      line-height: 1;
-      font-weight: 700;
+      letter-spacing: -0.04em;
+      font-weight: bolder;
+      // text-transform: uppercase;
       hyphens: auto;
     }
     h2 {
       margin: 0;
       margin-top: 1em;
       line-height: 1;
-      font-size: 1.5em;
-      text-transform: lowercase;
-      font-weight: 400;
+      font-size: 32pt;
+      letter-spacing: -0.04em;
+      font-weight: normal;
     }
   }
   background: white;

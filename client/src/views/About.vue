@@ -32,6 +32,7 @@
         <i class="fab fa-youtube"></i>
       </a>
       <a
+        class="icon--zoomoid"
         target="_blank"
         href="https://www.zoomoid.de/">
         <img src="https://www.zoomoid.de/favicon.png" width="64" height="64">
@@ -67,6 +68,7 @@
 }
 #refs {
   display: flex;
+  margin-bottom: 64pt;
   a {
     flex-grow: 1;
     text-align: center;
