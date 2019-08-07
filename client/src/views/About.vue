@@ -78,9 +78,10 @@
     opacity: 0.5;
     transition: opacity ease 0.2s;
     color: rgba(24,24,24,1);
-    font-size: 64px;
+    font-size: 32pt;
     padding: 0 16px;
   }
+  flex-wrap: wrap;
 }
 </style>
 
