@@ -18,5 +18,3 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /dist /usr/share/nginx/html/
 
 RUN ls /usr/share/nginx/html
-
-ENV JS_SW_VERSION CI_COMMIT_SHORT_SHA
