@@ -12,10 +12,11 @@ RUN npm run build
 # 2nd stage: lightweight alpine container
 FROM nginx:alpine
 
-RUN rm /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/sites-available/default
 
-# LABEL Name=occloxium.com Version=1.0.0
-COPY nginx.conf /etc/nginx/sites-available/default.conf
+COPY nginx.conf /etc/nginx/sites-available/default
+
+RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 COPY --from=builder /dist /usr/share/nginx/html/
 
