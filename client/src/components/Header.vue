@@ -16,7 +16,7 @@ header {
     padding: 2em 1em;
     h1 {
       //font-size: 2.5em;
-      font-size: 64pt;
+      font-size: 48pt;
       line-height: 1;
       margin: 0;
       letter-spacing: -0.04em;
