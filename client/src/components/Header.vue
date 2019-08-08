@@ -2,7 +2,12 @@
   <header>
     <div class="inner">
       <h1>Alexander Bartolomey</h1>
-      <h2>Full Stack Web Engineer.<br>DevOps Enthusiast.<br/>Master of Containers.<br/>Musician.</h2>
+      <h2>
+        Full Stack Web Engineer.<br>
+        DevOps Enthusiast.<br/>
+        Containerizer.<br/>
+        Musician.
+      </h2>
     </div>
   </header>
 </template>
@@ -16,11 +21,11 @@ header {
     padding: 2em 1em;
     h1 {
       //font-size: 2.5em;
-      font-size: 48pt;
+      font-size: 56pt;
       line-height: 1;
       margin: 0;
       letter-spacing: -0.04em;
-      font-weight: bolder;
+      font-weight: 800;
       // text-transform: uppercase;
       hyphens: auto;
     }
@@ -30,7 +35,7 @@ header {
       line-height: 1;
       font-size: 32pt;
       letter-spacing: -0.04em;
-      font-weight: normal;
+      font-weight: 600;
     }
   }
   background: white;
