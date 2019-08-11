@@ -39,6 +39,9 @@ export default {
 <style lang="scss">
 .shrink-wrapper {
   width: 80%;
+  @media screen and (max-width: 425px) {
+    width: 100%
+  }
   margin: 0 auto;
 }
 .embed {
