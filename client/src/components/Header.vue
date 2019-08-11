@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="inner">
-      <h1>Alexander Bartolomey</h1>
+      <h1>Alexander Bar&shy;to&shy;lo&shy;mey</h1>
       <h2>
         Full Stack Web Engineer.<br>
         DevOps Enthusiast.<br/>
