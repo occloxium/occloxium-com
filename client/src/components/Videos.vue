@@ -1,23 +1,31 @@
 <template>
 <div>
-  <h1>zoomoid - Wild World</h1>
-  <div class="embed">
-    <iframe src="https://player.vimeo.com/video/263726213" frameborder="0" allowfullscreen></iframe>
+  <div class="shrink-wrapper">
+    <h1>zoomoid - Wild World</h1>
+    <div class="embed">
+      <iframe src="https://player.vimeo.com/video/263726213" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
-  <h1>zoomoid - Wild World (VIP Mix)</h1>
-  <div class="embed">
-    <iframe src="https://www.youtube.com/embed/LG7J5D6n78U" frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="shrink-wrapper">
+    <h1>zoomoid - Wild World (VIP Mix)</h1>
+    <div class="embed">
+      <iframe src="https://www.youtube.com/embed/LG7J5D6n78U" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
-  <h1>zoomoid - Zukunft</h1>
-  <div class="embed">
-    <iframe src="https://www.youtube.com/embed/aoDXE9Wol0A" frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="shrink-wrapper">
+    <h1>zoomoid - Zukunft</h1>
+    <div class="embed">
+      <iframe src="https://www.youtube.com/embed/aoDXE9Wol0A" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
-  <h1>zoomoid - Head In The Clouds</h1>
-  <div class="embed">
-    <iframe src="https://www.youtube.com/embed/lBmZLseIHGw" frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="shrink-wrapper">
+    <h1>zoomoid - Head In The Clouds</h1>
+    <div class="embed">
+      <iframe src="https://www.youtube.com/embed/lBmZLseIHGw" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
 </div>
 </template>
@@ -29,10 +37,15 @@ export default {
 </script>
 
 <style lang="scss">
+.shrink-wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
 .embed {
+  display: block;
   width: 100%;
   position: relative;
-  margin: 48px 0;
+  margin: 48px auto;
   padding-top: 56.25%;
 
   iframe {

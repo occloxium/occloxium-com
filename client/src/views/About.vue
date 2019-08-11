@@ -35,7 +35,7 @@
         class="icon--zoomoid"
         target="_blank"
         href="https://www.zoomoid.de/">
-        <img src="https://www.zoomoid.de/favicon.png" width="32" height="32">
+        <img src="https://www.zoomoid.de/favicon.png">
       </a>
     </section>
     <div class="full-width-container">
@@ -71,15 +71,18 @@
   margin-bottom: 64pt;
   a {
     flex-grow: 1;
-    text-align: center;
     &:hover, &:active {
       opacity: 1;
     }
     opacity: 0.5;
     transition: opacity ease 0.2s;
     color: rgba(24,24,24,1);
-    font-size: 32pt;
-    padding: 0 16px;
+    font-size: (100vw / 12);
+    padding: 0 (100% / 48);
+    & > img {
+      max-width: (100vw / 12);
+      max-height: (100vw / 12);
+    }
   }
   flex-wrap: wrap;
 }
