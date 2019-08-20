@@ -1,4 +1,3 @@
-
 // vue.config.js
 module.exports = {
   configureWebpack: {
@@ -7,5 +6,7 @@ module.exports = {
 
       ]
     }
-  }
+  },
+
+  productionSourceMap: false
 }

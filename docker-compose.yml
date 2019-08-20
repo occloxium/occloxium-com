@@ -7,6 +7,14 @@ services:
     ports:
       - 7000:80
     restart: always
+  occloxium_dev:
+    container_name: dev.occloxium.com
+    image: registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com/experimental:latest
+    ports:
+      - "7005:80"
+    restart: always
+    volumes:
+      - /var/log/nginx/proxy/staging.occloxium.com:/var/log/nginx
 
 networks:
   default:

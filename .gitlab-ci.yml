@@ -47,7 +47,7 @@ deploy-dev:
     name: Staging
     url: https://staging.occloxium.com
   script:
-    - docker-compose -f staging.yml down
-    - docker-compose -f staging.yml up -d
+    - docker-compose down
+    - docker-compose up -d
   tags:
     - occloxium-shell
