@@ -77,11 +77,11 @@
     opacity: 0.5;
     transition: opacity ease 0.2s;
     color: rgba(24,24,24,1);
-    font-size: (100vw / 12);
-    padding: 0 (100% / 48);
+    font-size: 3em;
+    text-align: center;
     & > img {
-      max-width: (100vw / 12);
-      max-height: (100vw / 12);
+      max-width: 1em;
+      max-height: 1em;
     }
   }
   flex-wrap: wrap;
