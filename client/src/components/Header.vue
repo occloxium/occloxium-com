@@ -28,8 +28,9 @@ export default {
   * {
     color: inherit;
     text-decoration: none;
-    font-weight: 800;
+    font-weight: 300;
     font-size: 16pt;
+    letter-spacing: -0.04em;
   }
   .spacer {
     font-family: 'Inter Var', sans-serif;

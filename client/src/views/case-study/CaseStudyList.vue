@@ -29,6 +29,12 @@ export default {
           image: 'https://cdn.occloxium.com/i/occloxium/case-study/seminar/page_2.svg',
           link: 'seminar'
         },
+        {
+          name: 'Hub',
+          title: 'Occloxium Hub',
+          link: 'hub',
+          image: 'https://cdn.occloxium.com/i/occloxium/case-study/hub/occloxium-hub.svg'
+        }
       ]
     };
   }
@@ -55,16 +61,17 @@ a {
   margin: 1em;
   max-width: 768px;
   width: 80%;
+
   background: #ffffff;
   box-sizing: border-box;
   & .card-banner {
     padding: 2em;
     border-radius: 8pt;
-    background-color: #efefef;
+    background-color: #ffab00;
     height: 250px;
     & .inner {
       background-size: 100% cover;
-      background-position: center top;
+      background-position: center center;
       background-repeat: no-repeat;
       height: 100%;
       width: 100%;
