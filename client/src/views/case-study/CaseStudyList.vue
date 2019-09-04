@@ -67,7 +67,7 @@ a {
   & .card-banner {
     padding: 2em;
     border-radius: 8pt;
-    background-color: #ffab00;
+    background-color: #ffd600;
     height: 250px;
     & .inner {
       background-size: 100% cover;
