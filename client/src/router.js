@@ -8,7 +8,8 @@ import {
 
 import {
   CaseStudyList,
-  CaseStudySeminar
+  CaseStudySeminar,
+  CaseStudyHub,
 } from '@/views/case-study';
 
 Vue.use(Router);
@@ -36,6 +37,11 @@ export default new Router({
           name: 'Seminar',
           component: CaseStudySeminar,
         },
+        {
+          path: 'hub',
+          name: 'Hub',
+          component: CaseStudyHub,
+        }
       ]
     }
   ]
