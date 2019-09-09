@@ -38,12 +38,6 @@
         <img src="https://www.zoomoid.de/favicon.png">
       </a>
     </section>
-    <div class="full-width-container">
-      <Videos/>
-    </div>
-    <div class="limited-container">
-      <ImageList/>
-    </div>
   </div>
 </template>
 
@@ -89,13 +83,7 @@
 </style>
 
 <script>
-import ImageList from '@/components/ImageList.vue';
-import Videos from '@/components/Videos.vue';
-
 export default {
-  components: {
-    ImageList,
-    Videos
-  }
+
 };
 </script>
