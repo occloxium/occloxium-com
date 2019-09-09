@@ -1,4 +1,4 @@
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   module: {
@@ -64,4 +64,4 @@ module.exports = {
     // make sure to include the plugin!
     new VueLoaderPlugin()
   ]
-}
+};

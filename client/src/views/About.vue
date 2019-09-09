@@ -89,13 +89,13 @@
 </style>
 
 <script>
-import ImageList from '@/components/ImageList.vue'
-import Videos from '@/components/Videos.vue'
+import ImageList from '@/components/ImageList.vue';
+import Videos from '@/components/Videos.vue';
 
 export default {
   components: {
     ImageList,
     Videos
   }
-}
+};
 </script>

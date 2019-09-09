@@ -39,9 +39,9 @@ export default {
         'MISSING_YOU',
         'SINGULARITY'
       ].reverse()
-    }
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

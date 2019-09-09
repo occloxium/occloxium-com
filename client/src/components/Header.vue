@@ -1,44 +1,44 @@
 <template>
-  <header>
-    <div class="inner">
-      <h1>Alexander Bar&shy;to&shy;lo&shy;mey</h1>
-      <h2>
-        Full Stack Web Engineer.<br>
-        DevOps Enthusiast.<br/>
-        Containerizer.<br/>
-        Musician.
-      </h2>
-    </div>
-  </header>
+  <div class="header">
+    <router-link to="/">Home</router-link>
+    <span class="spacer">→</span>
+    <router-link v-bind:to="'/case-study'">Case Studies</router-link>
+    <span v-if="this.except">
+      <span class="spacer">→</span>
+      <router-link v-bind:to="$route.path">{{$route.name}}</router-link>
+    </span>
+  </div>
 </template>
 
-<style lang="scss" scoped>
-header {
-  .inner {
-    max-width: 768px;
-    margin: 0 auto;
-    color: black;
-    padding: 2em 1em;
-    h1 {
-      //font-size: 2.5em;
-      font-size: 56pt;
-      line-height: 1;
-      margin: 0;
-      letter-spacing: -0.04em;
-      font-weight: 800;
-      // text-transform: uppercase;
-      hyphens: auto;
-    }
-    h2 {
-      margin: 0;
-      margin-top: 1em;
-      line-height: 1;
-      font-size: 32pt;
-      letter-spacing: -0.04em;
-      font-weight: 600;
+<script>
+export default {
+  computed: {
+    except: function(){
+      return this.$route.path.match(/^\/case-study\/?$/) === null;
     }
   }
-  background: white;
-  padding: 2em 12px 0 12px;
+};
+</script>
+
+<style lang="scss" scoped>
+.header {
+  padding: 16px 2em;
+  background: #ffffff;
+  color: rgba(0,0,0,0.87);
+  * {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: 16pt;
+    letter-spacing: -0.04em;
+  }
+  .spacer {
+    font-family: 'Inter Var', sans-serif;
+    font-weight: bold;
+    padding: 0 8px;
+  }
+  a:hover, a:active {
+    text-decoration: underline;
+  }
 }
 </style>
