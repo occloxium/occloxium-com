@@ -2,12 +2,14 @@
   <div>
     <Intro></Intro>
     <About></About>
+    <Work></Work>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Intro from '@/views/Intro.vue';
+import Work from '@/views/Work.vue';
 import About from '@/views/About.vue';
 
 export default {
@@ -15,6 +17,7 @@ export default {
   components: {
     Intro,
     About,
+    Work,
   }
 };
 </script>

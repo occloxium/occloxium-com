@@ -187,9 +187,9 @@ $zoomoid-fade: linear-gradient(135deg,
   }
   a.block {
     padding: 4px 8px;
-    text-decoration: none;
-    color: #ffffff;
-    background: #000000;
+    // text-decoration: none;
+    // color: #ffffff;
+    // background: #000000;
   }
 }
 .title,
