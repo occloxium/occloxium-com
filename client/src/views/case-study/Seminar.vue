@@ -22,37 +22,89 @@
       </p>
       <p>
         To make life easier for me, as I wanted my build versions of the paper to be available in a central place
-        other than my hard drive, where PDFs would probably have interfered, and my supervisor in a way that 
-        I could quickly get feedback on drafts without actually having to send the document via e-mail, again 
+        other than my hard drive, where PDFs would probably have interfered, and my supervisor in a way that
+        I could quickly get feedback on drafts without actually having to send the document via e-mail, again
         creating interference of versions on his side, I entered the planning phase for a deployment pipeline
         with visual version control integrated using the web.
       </p>
     </div>
     <div class="no-margin">
-      <div id="page2"></div>
+      <div id="page2" class="figure"></div>
       <div class="label">
-        Schematics of the pipeline architecture 
+        Schematics of the pipeline architecture
       </div>
     </div>
-    <p>
-      Hours at the drawing board spawned the above architecture. Part One, the upper one, covers the actual production of PDF output. 
-      On push to the remote repository, a fairly common build pipeline for documents using the typesetting environment LaTeX runs on
-      the source files for the paper. LaTeX pipelines have been done before, however, using Docker to build documents seems to be not 
-      that widely spread, which is a shame, since the portability gained from doing so eliminates the problem of manually installing 
-      TeXLive or another TeX distribution, which are classically pretty stubborn.
-    </p>
-    <p>
-      Using a self-made docker image bundling the <code>latexmk</code> toolchain as well as <code>TikZ</code>, required for graphics and
-      the rest of the remaining classes, 3 different PDFs, differing in form and style, are produced and exported as artifacts of that pipeline.
-      The <a href="https://www.github.com/occloxium/docker-latexmk">docker image</a> is actually quite versatile, so I will link it here for 
-      interested readers. Using it is dead simple, just mount a volume with your source files and override the entrypoint/cmd with latexmk
-      to your files.
-    </p>
-    <p>
-      
-    </p>
+    <div class="body">
+      <p>
+        Hours at the drawing board spawned the above architecture. Part One, the upper one, covers the actual production of PDF output.
+        On push to the remote repository, a fairly common build pipeline for documents using the typesetting environment LaTeX runs on
+        the source files for the paper. LaTeX pipelines have been done before, however, using Docker to build documents seems to be not
+        that widely spread, which is a shame, since the portability gained from doing so eliminates the problem of manually installing
+        TeXLive or another TeX distribution, which are classically pretty stubborn.
+      </p>
+      <h3>Architecture</h3>
+      <p>
+        Using a self-made docker image bundling the <code>latexmk</code> toolchain as well as TikZ, required for graphics and
+        the rest of the remaining classes, 3 different PDFs, differing in form and style, are produced and exported as artifacts of that pipeline.
+        The <a href="https://www.github.com/occloxium/docker-latexmk">docker image</a> is actually quite versatile, so I will link it here for
+        interested readers. Using it is dead simple, just mount a volume with your source files and override the entrypoint/cmd with latexmk
+        to your files.
+      </p>
+      <p>
+        After building said PDFs, the artifacts are bundled and exported to the deployment stage on that repository. A simple shell script takes the files,
+        moves them to the file storage and generates metadata, such as <b>name</b>, <b>commit id</b>, <b>timestamp</b> and more. Using a preset deployment secret,
+        a <code>POST /api/commit</code> is sent from the deployment pipeline. The NodeJS API endpoint verifies the request and adds the commit
+        with the metadata attached to a MongoDB database service running in the Docker Network.
+      </p>
+    </div>
     <div class="no-margin">
-      <div id="page3"></div>
+      <div id="page3" class="figure"></div>
+      <div class="label">
+        Container Architecture for serving the versions on the front-end.
+      </div>
+    </div>
+    <div class="body">
+      <p>
+        Once a user now requests the front-end page at <a href="https://seminar.occloxium.com/" target="_blank">https://seminar.occloxium.com</a>
+        or refreshes the site, an asynchronous query to <code>GET /api/commit</code> retrieves the most recent commits pushed to the remote
+        and displays links to the PDFs produced from that commit's stage.
+      </p>
+      <h3>Caveats</h3>
+      <p>
+        While this works in practise very well (see <a href="https://seminar.occloxium.com/">here</a>),
+        it only works because all parts running share the same underlying system, i.e. the GitLab Runners running on the same host as the file server as the
+        Docker Network. Because of that, the <code>deploy</code> runner running in Shell mode can actually access the filesystem to <code>PUT</code> files to the storage.
+        Since the file server simply provides access to whoever knows the specific route, no further authentication on <code>GET</code> is required.
+      </p>
+      <p>
+        The deployment secret used by the <code>deploy</code> runner is also hardcoded into the GitLab CI Variables storage and not mutable in any form. Some smart
+        key sharing mechanism and registration process would be highly appreciated, as it would add modularity the project currently lacks
+        <small>(it is, in fact, broken at the point writing this)</small>.
+      </p>
+      <h3>Take-Aways</h3>
+      <p>
+        Designing this architecture on top of a broken ecosystem of LaTeX presented itself as a challenge, primarly to get the <code>docker-latexmk</code> container
+        to produce output, but also in handling the tagging of documents and making them available only by using the commit id. It also helped in writing the paper,
+        as I was able to quickly send my supervisor the most recent version simply by sending a link via email instead of having to send actual pdfs. In the process
+        of building the front-end, he pointed out to me, that adding another stage in the pipeline could possibly extend usability, in particular using a stage for
+        gathering metrics on the pdf such as page count, figure count, errors and warning produced by TeX to obtain information on the document without even having
+        to look at it. A possible use case might be a heavily page-limited writing process.
+      </p>
+      <p>
+        One could argue that using such a pipeline is vastly overkill for writing papers, and he/she would be correct, however, as this also serves academic exercise,
+        building such an architecture is justified simply in educational terms. This also covers the argument one could make about the realistic reusability of this
+        platform.
+      </p>
+      <h3>Source Code</h3>
+      <p>
+        The platform source code is available on the RWTH Aachen GitLab:
+        <a class="block" href="https://git.rwth-aachen.de/zoomoid/seminar-helper">https://git.rwth-aachen.de/zoomoid/seminar-helper</a>
+      </p>
+      <p>
+        <small>The source code for the paper unfortunately technically does not belong to me so
+          it'll have to remain private.
+        </small>
+      </p>
     </div>
   </article>
 </template>
@@ -120,6 +172,25 @@ $zoomoid-fade: linear-gradient(135deg,
   a {
     color: inherit;
   }
+  h3 {
+    font-size: 20pt;
+  }
+  code {
+    font-weight: bold;
+    background: rgba(214,214,214,0.7);
+    padding: 2px 8px;
+    font-size: 14pt;
+    border-radius: 3px;
+  }
+  .block {
+    display: inline-block;
+  }
+  a.block {
+    padding: 4px 8px;
+    text-decoration: none;
+    color: #ffffff;
+    background: #000000;
+  }
 }
 .title,
 .body {
@@ -129,11 +200,14 @@ $zoomoid-fade: linear-gradient(135deg,
   box-sizing: border-box;
   padding: 2em;
   width: 100%;
-  div {
+  .figure {
     height: 360px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
+  }
+  .label {
+    text-align: center;
   }
 }
 #page2 {
