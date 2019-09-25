@@ -42,8 +42,6 @@ a {
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: center center;
-    filter: blur(0);
-    transform: scale(1.1);
   }
   .text {
     position: relative;
@@ -57,7 +55,6 @@ a {
     background: transparentize(#ffd600, 0.25);
     font-size: 24pt;
     font-weight: bold;
-    backdrop-filter: blur(0);
   }
 }
 </style>
