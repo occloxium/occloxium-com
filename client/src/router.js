@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import {
   Home,
   CaseStudy,
+  Vorkurs,
 } from '@/views';
 
 import {
@@ -43,6 +44,11 @@ export default new Router({
           component: CaseStudyHub,
         }
       ]
+    },
+    {
+      path: '/vorkurs',
+      name: 'Vorkurs',
+      component: Vorkurs
     }
   ]
 });
