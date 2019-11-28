@@ -5,6 +5,9 @@
         <img src="@/assets/alex.jpg">
       </div>
     </section>
+    <section class="limited-container">
+      <AboutMe></AboutMe>
+    </section>
     <section class="limited-container" id="refs">
       <a
         target="_blank"
@@ -83,7 +86,10 @@
 </style>
 
 <script>
+import { AboutMe } from '@/components';
 export default {
-
+  components: {
+    AboutMe
+  }
 };
 </script>

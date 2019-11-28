@@ -13,9 +13,8 @@
 </template>
 
 <script>
-import ImageList from '@/components/ImageList.vue';
-import Videos from '@/components/Videos.vue';
-import CaseStudies from '@/components/CaseStudies.vue';
+import { ImageList, Videos, CaseStudies } from '@/components';
+
 export default {
   components: {
     ImageList,

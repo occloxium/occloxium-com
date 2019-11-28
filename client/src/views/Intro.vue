@@ -26,6 +26,7 @@ export default {
     color: black;
     padding: 2em 1em;
     h1 {
+      max-width: 90%;
       //font-size: 2.5em;
       font-size: 56pt;
       line-height: 1;

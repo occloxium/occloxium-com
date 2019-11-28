@@ -3,14 +3,10 @@ import Router from 'vue-router';
 
 import {
   Home,
-  CaseStudy,
-  Vorkurs,
 } from '@/views';
 
 import {
-  CaseStudyList,
   CaseStudySeminar,
-  CaseStudyHub,
 } from '@/views/case-study';
 
 Vue.use(Router);
@@ -24,31 +20,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/case-study',
-      name: 'Case Study',
-      component: CaseStudy,
-      children: [
-        {
-          path: '/',
-          name: 'Case Study',
-          component: CaseStudyList,
-        },
-        {
-          path: 'seminar',
-          name: 'Seminar',
-          component: CaseStudySeminar,
-        },
-        {
-          path: 'hub',
-          name: 'Hub',
-          component: CaseStudyHub,
-        }
-      ]
+      path: '/case-study/seminar',
+      name: 'Seminar',
+      component: CaseStudySeminar,
     },
-    {
-      path: '/vorkurs',
-      name: 'Vorkurs',
-      component: Vorkurs
-    }
   ]
 });

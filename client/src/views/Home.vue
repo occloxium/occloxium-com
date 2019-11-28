@@ -23,7 +23,6 @@ export default {
 </script>
 
 <style lang="scss">
-// @import url('https://fonts.googleapis.com/css?family=Material+Icons|DM+Sans:400,500,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Material+Icons&display=swap');
 @import url('https://rsms.me/inter/inter.css');
 html { font-family: 'Inter', sans-serif; }

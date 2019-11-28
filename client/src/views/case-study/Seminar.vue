@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <div v-on:scroll="this.onScroll()">
     <div class="header"></div>
     <div class="title">
       <h2>Case Study:</h2>
@@ -106,12 +106,42 @@
         </small>
       </p>
     </div>
-  </article>
+    <BackButton v-if="this.scrolling"></BackButton>
+  </div>
 </template>
 
 <script>
+import { BackButton } from '@/components';
+
 export default {
   name: 'CaseStudySeminar',
+  components: {
+    BackButton
+  },
+  data () {
+    return {
+      scrolling: false,
+      timeout: null
+    };
+  },
+  methods: {
+    handleScroll () {
+      this.scrolling = window.scrollY > 0;
+      if(this.timeout !== null){
+        clearTimeout(this.timeout);
+      }
+      let self = this;
+      this.timeout = setTimeout(() => {
+        self.scrolling = false;
+      }, 3000);
+    }
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
 };
 </script>
 

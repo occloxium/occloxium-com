@@ -36,7 +36,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .shrink-wrapper {
   width: 80%;
   @media screen and (max-width: 768px) {
