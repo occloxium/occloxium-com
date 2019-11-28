@@ -1,53 +1,113 @@
 stages:
   - build
-  - deploy
+  - bootup-staging
+  - deploy-staging
+  - after-staging
+  - deploy-prod
 
-build:
-  only:
-    - master
-  image: docker:latest
-  stage: build
-  script: 
-    - echo "$CI_JOB_TOKEN" | docker login registry.git.rwth-aachen.de --username gitlab-ci-token --password-stdin 
-    - docker build -t registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com .
-    - docker push registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com
-  tags: 
-    - occloxium-docker
+.kubectl:
+  image:
+    name: registry.git.rwth-aachen.de/zoomoid/docker-kubectl:latest
+    entrypoint: ['/docker-entrypoint.sh']
+  before_script:
+    - echo $kube_config | base64 -d > /admin.conf
+  tags:
+    - kube
 
-build-dev:
+variables:
+  NAMESPACE: "-n web"
+  SERVICE: 'staging-bartolomey-me'
+  HOSTS: '["staging.bartolomey.me","staging.occloxium.com"]'
+
+build-staging:
   except:
     - master
   image: docker:latest
   stage: build
   script: 
     - echo "$CI_JOB_TOKEN" | docker login registry.git.rwth-aachen.de --username gitlab-ci-token --password-stdin 
-    - docker build -t registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com/experimental .
-    - docker push registry.git.rwth-aachen.de/occloxium-webdev/occloxium.com/experimental:latest
+    - docker build -t $CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA .
+    - docker push $CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA
+    - docker tag $CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA $CI_REGISTRY_IMAGE/nightly:latest
+    - docker push $CI_REGISTRY_IMAGE/nightly:latest
   tags: 
     - occloxium-docker
 
-deploy: 
-  only: 
-    - master
-  stage: deploy
-  environment:
-    name: deployment
-    url: https://www.occloxium.com
-  script:
-    - docker-compose down
-    - docker-compose up -d
-  tags:
-    - occloxium-shell
+build-prod:
+  image: docker:latest
+  stage: build
+  script: 
+    - echo "$CI_JOB_TOKEN" | docker login registry.git.rwth-aachen.de --username gitlab-ci-token --password-stdin 
+    - docker build -t $CI_REGISTRY_IMAGE/stable .
+    - docker push $CI_REGISTRY_IMAGE/stable:latest
+  tags: 
+    - occloxium-docker
 
-deploy-dev:
-  except: 
-    - master
-  stage: deploy
-  environment:
-    name: Staging
-    url: https://staging.occloxium.com
+create-patches:
+  stage: build
+  extends: .kubectl
   script:
-    - docker-compose down
-    - docker-compose up -d
-  tags:
-    - occloxium-shell
+    - python3 /create-patches.sh --service $SERVICE --hosts $HOSTS
+    - cp /**.patch.json ./
+  artifacts:
+    paths:
+      - ./remove-staging.patch.json
+      - ./add-staging.patch.json
+
+bootup-staging:
+  except:
+    - master
+  stage: bootup-staging
+  extends: .kubectl
+  script:
+    - k get ingress
+    - kubectl --kubeconfig /admin.conf -n web patch ingress/$SERVICE --patch "$(cat ./add-staging.patch.json)"
+
+deploy-staging:
+  except:
+    - master
+  stage: deploy-staging
+  extends: .kubectl
+  environment:
+    name: staging
+    url: https://staging.bartolomey.me
+  script:
+    - k set image deployment/$SERVICE $SERVICE=$CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA
+    - k rollout status deployment/$SERVICE
+
+takedown-staging:
+  except:
+    - master
+  stage: after-staging
+  when: manual
+  extends: .kubectl
+  environment:
+    name: staging
+    url: https://staging.bartolomey.me
+  script:
+    - k get deployments
+    - kubectl --kubeconfig /admin.conf -n web patch ingress/$SERVICE --patch "$(cat ./remove-staging.patch.json)"
+
+auto-takedown-staging:
+  only:
+    - master
+  stage: deploy-prod
+  extends: .kubectl
+  environment:
+    name: staging
+    url: https://staging.bartolomey.me
+  script:
+    - k get deployments
+    - kubectl --kubeconfig /admin.conf -n web patch ingress/$SERVICE --patch "$(cat ./remove-staging.patch.json)"
+
+
+deploy-production:
+  only:
+    - master
+  stage: deploy-prod
+  extends: .kubectl
+  script: 
+    - k rollout restart deployment/bartolomey-me
+  environment:
+    name: production
+    url: https://bartolomey.me
