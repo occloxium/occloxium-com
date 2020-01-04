@@ -7,20 +7,6 @@
     </div>
   </div>
   <div class="shrink-wrapper">
-    <h1>zoomoid - Wild World (VIP Mix)</h1>
-    <div class="embed">
-      <iframe src="https://www.youtube.com/embed/LG7J5D6n78U" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div class="shrink-wrapper">
-    <h1>zoomoid - Zukunft</h1>
-    <div class="embed">
-      <iframe src="https://www.youtube.com/embed/aoDXE9Wol0A" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div class="shrink-wrapper">
     <h1>zoomoid - Head In The Clouds</h1>
     <div class="embed">
       <iframe src="https://www.youtube.com/embed/lBmZLseIHGw" frameborder="0"
