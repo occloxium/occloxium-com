@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="shrink-wrapper">
+  <!-- <div class="shrink-wrapper">
     <h1>zoomoid - Wild World</h1>
     <div class="embed">
       <iframe src="https://player.vimeo.com/video/263726213" frameborder="0" allowfullscreen></iframe>
@@ -12,7 +12,7 @@
       <iframe src="https://www.youtube.com/embed/lBmZLseIHGw" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-  </div>
+  </div> -->
 </div>
 </template>
 
@@ -24,10 +24,7 @@ export default {
 
 <style lang="scss" scoped>
 .shrink-wrapper {
-  width: 80%;
-  @media screen and (max-width: 768px) {
-    width: 100%
-  }
+
   margin: 0 auto;
 }
 .embed {
@@ -48,8 +45,6 @@ export default {
   }
 }
 h1 {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
   letter-spacing: -0.04em;
   font-size: 32pt;
   max-width: 90%;

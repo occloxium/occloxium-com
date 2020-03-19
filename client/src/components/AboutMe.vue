@@ -13,7 +13,7 @@
     </p>
     <p>
       I've adopted a faible for design and typography and will happily chat with you about the quirks and details of typefaces.
-      Just begin the conversation by saying the name of any modern main-stream font.
+      Just begin the conversation by saying the name of any modern mainstream font.
     </p>
   </section>
 

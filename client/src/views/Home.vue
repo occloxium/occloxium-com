@@ -2,14 +2,12 @@
   <div>
     <Intro></Intro>
     <About></About>
-    <Work></Work>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import Intro from '@/views/Intro.vue';
-import Work from '@/views/Work.vue';
 import About from '@/views/About.vue';
 
 export default {
@@ -17,18 +15,16 @@ export default {
   components: {
     Intro,
     About,
-    Work,
   }
 };
 </script>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Material+Icons&display=swap');
-@import url('https://rsms.me/inter/inter.css');
-html { font-family: 'Inter', sans-serif; }
-@supports (font-variation-settings: normal) {
-  html { font-family: 'Inter var', sans-serif; }
-}
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;500;700;800&display=swap');
+
+html { font-family: 'Work Sans', sans-serif; }
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
