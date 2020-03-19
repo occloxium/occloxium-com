@@ -1,13 +1,8 @@
 <template>
   <div class="header">
     <div class="inner">
-      <h1>Alexander Bartolomey</h1>
-      <h2>
-        Full Stack Web Engineer.<br>
-        DevOps Enthusiast.<br/>
-        Containerizer.<br/>
-        Musician.
-      </h2>
+      <h1>Alexander Bartolomey is a YAML Engineer, Kubernetes Enthusiast, Containerizer, Musician &amp; Pizza Lover.
+      </h1>
     </div>
   </div>
 </template>
@@ -26,13 +21,14 @@ export default {
     color: black;
     padding: 2em 1em;
     h1 {
+      margin-top: 2em;
       max-width: 90%;
       //font-size: 2.5em;
-      font-size: 56pt;
+      font-size: 34pt;
       line-height: 1;
-      margin: 0;
+      // margin: 0;
       letter-spacing: -0.04em;
-      font-weight: 800;
+      font-weight: 700;
       // text-transform: uppercase;
       hyphens: auto;
     }

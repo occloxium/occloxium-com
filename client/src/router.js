@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import {
   Home,
+  Work
 } from '@/views';
 
 import {
@@ -17,7 +18,12 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+    },
+    {
+      path: '/work',
+      name: 'Work',
+      component: Work,
     },
     {
       path: '/case-study/seminar',

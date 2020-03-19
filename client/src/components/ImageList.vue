@@ -49,14 +49,17 @@ export default {
     display: block;
     flex-wrap: wrap;
     column-count: 2;
-    padding: 0;
     li {
+      border-radius: 6px;
       break-inside: avoid-column;
       position: relative;
       box-sizing: border-box;
       list-style-type: none;
       margin: 0 0 16px;
+
       img {
+        box-shadow: 0 8px 10px -5px rgba(0,0,0,.2), 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12) !important;
+        border-radius: 6px;
         width: 100%;
         display: block;
         height: auto;
@@ -69,7 +72,7 @@ export default {
       column-count: 2
     }
     @media screen and (min-width: 768px){
-      column-count: 3
+      column-count: 2
     }
   }
 </style>
