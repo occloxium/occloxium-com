@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  margin-top: 2em;
+  // margin-top: 2em;
 }
 
 .limited-container {
@@ -36,7 +36,7 @@ export default {
   padding: 1em 2em;
   width: 80%;
   @media screen and (max-width: 768px) {
-    width: 100%
+    width: 80%
   }
 
 }
@@ -44,7 +44,7 @@ export default {
 .full-width-container {
   max-width: auto;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   @media screen and (max-width: 768px) {
     width: 100%
   }
