@@ -46,16 +46,16 @@ export default {
 
 <style lang="scss" scoped>
   .image-list {
-    display: block;
-    flex-wrap: wrap;
-    column-count: 2;
+    display: grid;
+    gap: 16px;
+    padding: 0;
     li {
       border-radius: 6px;
       break-inside: avoid-column;
       position: relative;
       box-sizing: border-box;
       list-style-type: none;
-      margin: 0 0 16px;
+      margin: 0 0;
 
       img {
         box-shadow: 0 8px 10px -5px rgba(0,0,0,.2), 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12) !important;
@@ -65,14 +65,14 @@ export default {
         height: auto;
       }
     }
-    @media screen and (max-width: 481px){
-      column-count: 1
+    @media screen and (max-width: 480px){
+      grid-template-columns: 1fr;
     }
-    @media screen and (max-width: 768px){
-      column-count: 2
+    @media screen and (max-width: 768px) and (min-width: 481px){
+      grid-template-columns: 1fr 1fr 1fr;
     }
     @media screen and (min-width: 768px){
-      column-count: 2
+      grid-template-columns: 1fr 1fr 1fr;
     }
   }
 </style>
