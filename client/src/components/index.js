@@ -1,11 +1,8 @@
-import Header from './Header.vue';
 import Footer from './Footer.vue';
-import ImageList from './ImageList.vue';
-import Videos from './Videos.vue';
-import AboutMe from './AboutMe';
-import CaseStudies from './CaseStudies';
-import BackButton from './BackButton';
+import SocialRefs from './SocialRefs';
+import Showcase from './Showcase';
+import Navigation from './Navigation';
 
 export {
-  Header, Footer, ImageList, Videos, AboutMe, CaseStudies, BackButton
+  Navigation, Footer, SocialRefs, Showcase,
 };

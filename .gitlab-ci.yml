@@ -10,9 +10,12 @@ stages:
     name: registry.git.rwth-aachen.de/zoomoid/docker-kubectl:latest
     entrypoint: ['/docker-entrypoint.sh']
   before_script:
-    - echo $kube_config | base64 -d > /admin.conf
+    - echo $kube_config | base64 -d > /root/runner
+    - export KUBECONFIG="$KUBECONFIG:/root/runner"
+    - kubectl config view
+    - kubectl config use-context runner@kubernetes
   tags:
-    - kube
+    - kubernetes
 
 variables:
   NAMESPACE: "-n web"
@@ -31,7 +34,7 @@ build-staging:
     - docker tag $CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA $CI_REGISTRY_IMAGE/nightly:latest
     - docker push $CI_REGISTRY_IMAGE/nightly:latest
   tags: 
-    - occloxium-docker
+    - kubernetes
 
 build-prod:
   image: docker:latest
@@ -41,7 +44,7 @@ build-prod:
     - docker build -t $CI_REGISTRY_IMAGE/stable .
     - docker push $CI_REGISTRY_IMAGE/stable:latest
   tags: 
-    - occloxium-docker
+    - kubernetes
 
 create-patches:
   stage: build
@@ -60,8 +63,8 @@ bootup-staging:
   stage: bootup-staging
   extends: .kubectl
   script:
-    - k get ingress
-    - kubectl --kubeconfig /admin.conf -n web patch ingress/$SERVICE --patch "$(cat ./add-staging.patch.json)"
+    - kubectl get ingress
+    - kubectl patch ingress/$SERVICE --patch "$(cat ./add-staging.patch.json)"
 
 deploy-staging:
   except:
@@ -72,8 +75,8 @@ deploy-staging:
     name: staging
     url: https://staging.bartolomey.me
   script:
-    - k set image deployment/$SERVICE $SERVICE=$CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA
-    - k rollout status deployment/$SERVICE
+    - kubectl set image deployment/$SERVICE $SERVICE=$CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA
+    - kubectl rollout status deployment/$SERVICE
 
 takedown-staging:
   except:
@@ -85,8 +88,8 @@ takedown-staging:
     name: staging
     url: https://staging.bartolomey.me
   script:
-    - k get deployments
-    - kubectl --kubeconfig /admin.conf -n web patch ingress/$SERVICE --patch "$(cat ./remove-staging.patch.json)"
+    - kubectl get deployments
+    - kubectl patch ingress/$SERVICE --patch "$(cat ./remove-staging.patch.json)"
 
 auto-takedown-staging:
   only:
@@ -97,8 +100,8 @@ auto-takedown-staging:
     name: staging
     url: https://staging.bartolomey.me
   script:
-    - k get deployments
-    - kubectl --kubeconfig /admin.conf -n web patch ingress/$SERVICE --patch "$(cat ./remove-staging.patch.json)"
+    - kubectl get deployments
+    - kubectl patch ingress/$SERVICE --patch "$(cat ./remove-staging.patch.json)"
 
 
 deploy-production:
@@ -107,7 +110,7 @@ deploy-production:
   stage: deploy-prod
   extends: .kubectl
   script: 
-    - k rollout restart deployment/bartolomey-me
+    - kubectl rollout restart deployment/bartolomey-me
   environment:
     name: production
     url: https://bartolomey.me
