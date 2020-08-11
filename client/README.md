@@ -1,29 +1,15 @@
-# occloxium.com
+# occloxium-com/client
 
-## Project setup
-```
-npm install
-```
+The actual NodeJS/VueJS project root.
 
-### Compiles and hot-reloads for development
 ```
-npm run serve
-```
+npm install # Setup project
 
-### Compiles and minifies for production
-```
-npm run build
-```
+npm run serve # Compiles and hot-reloads for development
 
-### Run your tests
-```
-npm run test
-```
+npm run build # Compiles and minifies for production
 
-### Lints and fixes files
-```
-npm run lint
-```
+npm run test # Run tests
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+npm run lint # Lint + fix
+```
