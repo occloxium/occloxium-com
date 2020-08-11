@@ -3,7 +3,8 @@ import Router from 'vue-router';
 
 import {
   Home,
-  Work
+  Work,
+  Contact,
 } from '@/views';
 
 import {
@@ -24,6 +25,13 @@ export default new Router({
       path: '/work',
       name: 'Work',
       component: Work,
+      alias: ['/projects']
+    },
+    {
+      path: '/contact',
+      name: 'Contact',
+      component: Contact,
+      alias: ['/projects']
     },
     {
       path: '/case-study/seminar',

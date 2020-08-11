@@ -1,43 +1,40 @@
 <template>
   <div id="app">
-    <nav class="flex">
-      <li>
-        <router-link to="/">About</router-link>
-      </li>
-      <li class="flex--span">
-        <h1>Bartolomey</h1>
-      </li>
-      <li>
-        <router-link to="/work">Work</router-link>
-      </li>
-    </nav>
-    <router-view></router-view>
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.flex {
-  display: flex;
-  align-items: center;
-  &--span {
-    flex-grow: 1;
+<style lang="scss">
+html { font-family: 'Sora', sans-serif; font-weight: 500; }
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgba(0,0,0,1);
+}
+
+body {
+  & > * {
+    font-family: inherit;
   }
-  li {
-    list-style: none;
-    padding: 1em;
-    h1 {
-      margin: 0;
-      text-align: center;
-      text-transform: uppercase;
-    }
-    a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: 500;
-      &:hover, &:active {
-        text-decoration: underline;
-      }
-    }
-  }
+  margin: 0;
+  height: 100%;
+  font-size: 13pt;
+}
+
+h1, h2, h3 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+}
+.fade-enter-active, .fade-leave-active {
+  transition-property: opacity;
+  transition-timing-function: ease;
+  transition-duration: 0.25s;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
 }
 </style>

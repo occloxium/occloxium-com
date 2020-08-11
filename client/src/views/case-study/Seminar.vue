@@ -150,34 +150,36 @@
         </small>
       </p>
     </div>
-    <BackButton v-if="this.scrolling"></BackButton>
+    <div class="back-button" v-if="this.scrolling">
+      <a href="/work">
+        <i class="material-icons">
+          keyboard_arrow_left
+        </i>
+        <span>
+          Go Back
+        </span>
+      </a>
+    </div>
   </div>
 </template>
 
 <script>
-import { BackButton } from '@/components';
-
 export default {
   name: 'CaseStudySeminar',
-  components: {
-    BackButton
-  },
-  data() {
-    return {
-      scrolling: false,
-      timeout: null
-    };
-  },
+  data: () => ({
+    scrolling: false,
+    timeout: null,
+  }),
   methods: {
     handleScroll() {
-      this.scrolling = window.scrollY > 0;
-      if (this.timeout !== null) {
-        clearTimeout(this.timeout);
-      }
-      let self = this;
-      this.timeout = setTimeout(() => {
-        self.scrolling = false;
-      }, 3000);
+      this.scrolling = window.scrollY > 600;
+      // if (this.timeout !== null) {
+      //   clearTimeout(this.timeout);
+      // }
+      // let self = this;
+      // this.timeout = setTimeout(() => {
+      //   self.scrolling = false;
+      // }, 3000);
     }
   },
   created() {
@@ -190,26 +192,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$zoomoid-fade: linear-gradient(
-  135deg,
-  rgb(109, 23, 229) 0%,
-  rgb(109, 23, 229) 19.99%,
-  rgb(255, 0, 0) 20%,
-  rgb(255, 0, 0) 39.99%,
-  rgb(255, 174, 13) 40%,
-  rgb(255, 174, 13) 59.99%,
-  rgb(133, 255, 13) 60%,
-  rgb(133, 255, 13) 79.99%,
-  rgb(0, 216, 255) 80%,
-  rgb(0, 216, 255) 100%
-);
-
 .header {
-  background: url("../../assets/case-study/seminar/page_1.svg"), $zoomoid-fade;
+  background: url("/img/case-study/seminar/page_1.svg"), #000000;
   background-size: 80%, cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 400px;
+  height: 50vh;
   width: 100%;
   display: block;
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
@@ -245,10 +233,6 @@ $zoomoid-fade: linear-gradient(
     font-size: 16pt;
     letter-spacing: -0.04em;
     line-height: 1.5;
-    // column-width: 50%;
-    // column-fill: auto;
-    // column-count: 2;
-    // column-gap: 16pt;
   }
   a {
     color: inherit;
@@ -268,9 +252,6 @@ $zoomoid-fade: linear-gradient(
   }
   a.block {
     padding: 4px 8px;
-    // text-decoration: none;
-    // color: #ffffff;
-    // background: #000000;
   }
 }
 .title,
@@ -292,9 +273,45 @@ $zoomoid-fade: linear-gradient(
   }
 }
 #page2 {
-  background-image: url("../../assets/case-study/seminar/page_2.svg");
+  background-image: url("/img/case-study/seminar/page_2.svg");
 }
 #page3 {
-  background-image: url("../../assets/case-study/seminar/page_3.svg");
+  background-image: url("/img/case-study/seminar/page_3.svg");
+}
+.back-button {
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  background: white;
+  top: 0;
+  width: 100%;
+  align-items: center;
+  padding: 0.5em;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  a {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+    span, i {
+      line-height: 1;
+      vertical-align: middle;
+    }
+  }
+}
+.slide-enter-active {
+  animation: slide 0.5s ease-in forwards;
+}
+.slide-leave-active {
+  animation: slide 0.5s ease-out reverse forwards;
+
+}
+@keyframes slide {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
 }
 </style>
