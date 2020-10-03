@@ -31,8 +31,6 @@ build-staging:
     - echo "$CI_JOB_TOKEN" | docker login registry.git.rwth-aachen.de --username gitlab-ci-token --password-stdin 
     - docker build -t $CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA .
     - docker push $CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA
-    - docker tag $CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA $CI_REGISTRY_IMAGE/nightly:latest
-    - docker push $CI_REGISTRY_IMAGE/nightly:latest
   tags: 
     - kubernetes
 
@@ -75,8 +73,7 @@ deploy-staging:
     name: staging
     url: https://staging.bartolomey.me
   script:
-    - kubectl set image deployment/$SERVICE $SERVICE=$CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA
-    - kubectl rollout status deployment/$SERVICE
+    - kubectl set image deployment/$SERVICE $SERVICE=$CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA --record
 
 takedown-staging:
   except:
@@ -88,7 +85,6 @@ takedown-staging:
     name: staging
     url: https://staging.bartolomey.me
   script:
-    - kubectl get deployments
     - kubectl patch ingress/$SERVICE --patch "$(cat ./remove-staging.patch.json)"
 
 auto-takedown-staging:
@@ -110,7 +106,7 @@ deploy-production:
   stage: deploy-prod
   extends: .kubectl
   script: 
-    - kubectl rollout restart deployment/bartolomey-me
+    - kubectl set image deployment/bartolomey-me bartolomey-me=$CI_REGISTRY_IMAGE/stable:latest --record
   environment:
     name: production
     url: https://bartolomey.me
