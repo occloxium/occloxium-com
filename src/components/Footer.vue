@@ -57,10 +57,10 @@ export default {
         label: "zoomoid.de",
       },
       {
-        route: "https://haveibeenstolen.zoomoid.de",
+        route: "https://haveibeenstolen.bartolomey.me",
         label: "have-i-been-stolen",
         github: {
-          url: "https://github.com/occloxium/demo-man",
+          url: "https://github.com/occloxium/have-i-been-stolen",
         },
       },
       {

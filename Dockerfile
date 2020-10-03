@@ -6,6 +6,7 @@ COPY package.json .
 COPY package-lock.json .
 # npm ci for better performance in dependency resolution
 RUN npm ci
+ENV NODE_ENV production
 # bundle client
 COPY . .
 # build with webpack

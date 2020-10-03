@@ -19,8 +19,9 @@ stages:
 
 variables:
   NAMESPACE: "-n web"
-  SERVICE: 'staging-bartolomey-me'
+  STAGING: 'staging-bartolomey-me'
   HOSTS: '["staging.bartolomey.me","staging.occloxium.com"]'
+  PRODUCTION: 'bartolomey-me'
 
 build-staging:
   except:
@@ -39,8 +40,8 @@ build-prod:
   stage: build
   script: 
     - echo "$CI_JOB_TOKEN" | docker login registry.git.rwth-aachen.de --username gitlab-ci-token --password-stdin 
-    - docker build -t $CI_REGISTRY_IMAGE/stable .
-    - docker push $CI_REGISTRY_IMAGE/stable:latest
+    - docker build -t $CI_REGISTRY_IMAGE/stable:$CI_COMMIT_SHORT_SHA .
+    - docker push $CI_REGISTRY_IMAGE/stable:$CI_COMMIT_SHORT_SHA
   tags: 
     - kubernetes
 
@@ -61,7 +62,6 @@ bootup-staging:
   stage: bootup-staging
   extends: .kubectl
   script:
-    - kubectl get ingress
     - kubectl patch ingress/$SERVICE --patch "$(cat ./add-staging.patch.json)"
 
 deploy-staging:
@@ -73,7 +73,7 @@ deploy-staging:
     name: staging
     url: https://staging.bartolomey.me
   script:
-    - kubectl set image deployment/$SERVICE $SERVICE=$CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA --record
+    - kubectl set image deployments/$STAGING $STAGING=$CI_REGISTRY_IMAGE/nightly:$CI_COMMIT_SHORT_SHA --record
 
 takedown-staging:
   except:
@@ -99,14 +99,13 @@ auto-takedown-staging:
     - kubectl get deployments
     - kubectl patch ingress/$SERVICE --patch "$(cat ./remove-staging.patch.json)"
 
-
 deploy-production:
   only:
     - master
   stage: deploy-prod
   extends: .kubectl
   script: 
-    - kubectl set image deployment/bartolomey-me bartolomey-me=$CI_REGISTRY_IMAGE/stable:latest --record
+    - kubectl set image deployments/$PRODUCTION $PRODUCTION=$CI_REGISTRY_IMAGE/stable:$CI_COMMIT_SHORT_SHA --record
   environment:
     name: production
     url: https://bartolomey.me
