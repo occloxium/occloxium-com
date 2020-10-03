@@ -85,7 +85,7 @@ takedown-staging:
     name: staging
     url: https://staging.bartolomey.me
   script:
-    - kubectl patch ingress/$SERVICE --patch "$(cat ./remove-staging.patch.json)"
+    - kubectl patch ingress/$STAGING --patch "$(cat ./remove-staging.patch.json)"
 
 auto-takedown-staging:
   only:
@@ -97,7 +97,7 @@ auto-takedown-staging:
     url: https://staging.bartolomey.me
   script:
     - kubectl get deployments
-    - kubectl patch ingress/$SERVICE --patch "$(cat ./remove-staging.patch.json)"
+    - kubectl patch ingress/$STAGING --patch "$(cat ./remove-staging.patch.json)"
 
 deploy-production:
   only:
