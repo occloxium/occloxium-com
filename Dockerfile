@@ -1,12 +1,13 @@
-# 1st stage build client
-FROM node:latest as builder
-# copy package-lock.json (mainly) and package.json
-COPY /client/package.json ./
-COPY /client/package-lock.json ./
+FROM node:alpine as builder
+
+WORKDIR /app
+
+COPY package.json .
+COPY package-lock.json .
 # npm ci for better performance in dependency resolution
 RUN npm ci
 # bundle client
-COPY /client /
+COPY . .
 # build with webpack
 RUN npm run build
 
