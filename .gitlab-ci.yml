@@ -49,7 +49,7 @@ create-patches:
   stage: build
   extends: .kubectl
   script:
-    - python3 /create-patches.sh --service $SERVICE --hosts $HOSTS
+    - python3 /create-patches.sh --service $STAGING --hosts $HOSTS
     - cp /**.patch.json ./
   artifacts:
     paths:
@@ -62,7 +62,7 @@ bootup-staging:
   stage: bootup-staging
   extends: .kubectl
   script:
-    - kubectl patch ingress/$SERVICE --patch "$(cat ./add-staging.patch.json)"
+    - kubectl patch ingress/$STAGING --patch "$(cat ./add-staging.patch.json)"
 
 deploy-staging:
   except:
