@@ -1,38 +1,25 @@
 <template>
-  <div>
-    <div class="portrait"></div>
-    <div class="container mx-auto px-8 max-w-3xl">
-      <section class="mt-12 mb-12">
-        <h1
-          class="md:text-5xl text-3xl font-medium leading-none tracking-tight"
-        >
-          Alexander Bartolomey is a Containerizer, Kubernetes Enthusiast, YAML
-          Engineer, Musician &amp; Pizza Lover.
-        </h1>
-      </section>
-      <section>
-        <p class="tracking-tight font-medium text-lg">
-          I'm a master's student of Computer Science at RWTH Aachen University,
-          Germany, with a focus on both automation and orchestration of modern
-          software deployment using containers and Kubernetes. Over the course
-          of the years, I started a number of projects, some of which you can
-          find more about
-          <router-link class="underline" to="/work">here</router-link>.
-        </p>
-        <socials></socials>
-      </section>
-    </div>
+  <div class="social-nav flex justify-around py-8">
+    <a
+      v-for="s in socials"
+      :key="s.label"
+      :href="s.url"
+      target="_blank"
+      rel="norefer"
+      class="block opacity-50 hover:opacity-100"
+    >
+      <template v-if="s.icon">
+        <i :class="[s.icon.prefix, s.icon.key]" class="text-2xl"></i>
+      </template>
+      <template v-if="s.img">
+        <img class="h-6" :src="s.img.url" />
+      </template>
+    </a>
   </div>
 </template>
 
 <script>
-import Socials from "@/components/Socials.vue";
-
 export default {
-  name: "Home",
-  components: {
-    Socials,
-  },
   data: () => ({
     socials: [
       {
@@ -87,11 +74,4 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
-.portrait
-  background-image: url(/img/alex.jpg)
-  background-position: 40% 15%
-  width: 100%
-  height: 500px
-  max-height: 50vh
-</style>
+<style></style>

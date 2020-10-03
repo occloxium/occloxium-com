@@ -15,9 +15,9 @@
         docker-compose/swarm/stack or Kubernetes. The latter is of particular
         interest of me, as I'm currently deploying a bare-metal cluster.
         <br /><small class="mt-4 block leading-normal"
-          >In fact, what you are reading right now is served as a built Vue
-          app from an nginx:alpine container with 3-replica redudant deployment through an
-          ingress-nginx in Kubernetes 1.18!</small
+          >In fact, what you are reading right now is served as a built Vue app
+          from an nginx:alpine container with 3-replica redudant deployment
+          through an ingress-nginx in Kubernetes 1.18!</small
         >
       </p>
     </section>
@@ -25,15 +25,21 @@
       <h1 class="text-5xl font-medium">Contact me</h1>
       <p class="font-medium">
         You can always reach me via e-mail at
-        <a class="underline" :href="email.url">{{email.label}}</a>, as well as
-        through various social media platforms:
+        <a class="underline" :href="email.url">{{ email.label }}</a
+        >, as well as through various social media platforms:
       </p>
+      <socials></socials>
     </section>
   </div>
 </template>
 
 <script>
+import Socials from "@/components/Socials.vue";
+
 export default {
+  components: {
+    Socials,
+  },
   data: () => ({
     email: {
       url: "mailto:alexander@bartolomey.me",
@@ -50,8 +56,4 @@ export default {
   width: 100%
   height: 500px
   max-height: 50vh
-  filter: grayscale(1)
-  transition: filter 0.2s ease
-  &:hover, &:active
-    filter: grayscale(0)
 </style>
