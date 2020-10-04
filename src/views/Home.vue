@@ -94,4 +94,5 @@ export default {
   width: 100%
   height: 500px
   max-height: 50vh
+  background-size: cover
 </style>

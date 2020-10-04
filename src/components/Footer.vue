@@ -1,6 +1,6 @@
 <template>
-  <footer class="bg-black text-white text-xs md:px-8 p-4">
-    <div class="container mx-auto justify-between md:flex py-4">
+  <footer class="bg-black text-white text-xs py-4">
+    <div class="container mx-auto justify-between md:flex py-4 px-8 max-w-3xl">
       <div class="external mb-4 md:mb-0">
         <h2 class="text-sm font-medium">Navigation</h2>
         <router-link
