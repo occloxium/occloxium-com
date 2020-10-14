@@ -3,7 +3,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
-  purge: ["./src/**/*.vue","./public/**/*.html",],
+  purge: ["./src/**/*.vue", "./public/**/*.html"],
   target: "relaxed",
   prefix: "",
   important: false,
@@ -257,7 +257,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        "nimbus-sans",
+        "neue-haas-grotesk-display",
         "system-ui",
         "-apple-system",
         "BlinkMacSystemFont",

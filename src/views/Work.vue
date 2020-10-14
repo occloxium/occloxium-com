@@ -20,15 +20,15 @@
           />
         </div>
         <div>
-          <h1 class="text-4xl font-medium tracking-tighter leading-none mb-4">
+          <h1 class="text-4xl font-semibold tracking-tight leading-none mb-4">
             {{ e.title }}
           </h1>
-          <p class="tracking-tight font-medium leading-normal text-lg">
+          <p class="font-medium leading-normal text-xl">
             {{ e.body }}
           </p>
           <a
             :href="e.link"
-            class="block py-4 font-medium leading-normal tracking-tight underline"
+            class="block py-4 font-medium leading-normal underline"
           >
             {{ e.link }}
           </a>

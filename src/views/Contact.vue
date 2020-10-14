@@ -1,29 +1,28 @@
 <template>
   <div>
-    <div class="portrait"></div>
     <section class="container mx-auto pt-12 max-w-3xl px-8">
-      <h1 class="text-5xl font-medium">Expertise</h1>
-      <p class="font-medium tracking-tight">
-        More than 4 years of experience with both front-end and back-end
-        technology, as well as growing expertise with Kubernetes, Continous
-        Deployment, and Cloud-native technologies. Current well-established
-        tech-stacks include NodeJS + Vue/Angular, Python + Flask with MongoDB,
-        PostgreSQL and other stateful backends.<br />
-        I like to incorporate Docker and Containers into almost anything I do,
-        hence I'm experienced in both building, maintaining, and deploying
-        containers on small to medium scales using either
-        docker-compose/swarm/stack or Kubernetes. The latter is of particular
-        interest of me, as I'm currently deploying a bare-metal cluster.
-        <br /><small class="mt-4 block leading-normal"
-          >In fact, what you are reading right now is served as a built Vue app
-          from an nginx:alpine container with 3-replica redudant deployment
-          through an ingress-nginx in Kubernetes 1.18!</small
-        >
+      <img
+        src="/img/alex.jpg"
+        class="rounded-lg mb-6"
+        alt="Portrait of Alexander Bartolomey"
+      />
+      <h1 class="text-3xl lg:text-5xl font-bold leading-none mb-4">Expertise &amp; Profession</h1>
+      <p class="tracking-tight font-medium text-lg md:text-2xl lg:text-4xl">
+        I bring more than 4 years of experience with both front-end and back-end
+        technology, vast expertise with <b class="font-semibold">Kubernetes</b>,
+        CI/CD, and cloud-native technologies.
+      </p><p class="tracking-tight font-medium text-lg md:text-2xl lg:text-4xl">
+        I build apps and services mostly
+        in <b>NodeJS</b> with <b>Vue/Nuxt</b> featuring PostgreSQL, MongoDB, Redis and most other
+        modern stateful backends.
+      </p><p class="tracking-tight font-medium text-lg md:text-2xl lg:text-4xl">
+        I'm an excellent addition to your small team of developers and infrastructure engineers if incorporating
+        modern patterns
       </p>
     </section>
     <section class="container mx-auto pt-12 max-w-3xl pb-12 px-8">
-      <h1 class="text-5xl font-medium">Contact me</h1>
-      <p class="font-medium">
+      <h1 class="text-3xl lg:text-5xl font-bold">Contact me</h1>
+      <p class="tracking-tight font-medium text-lg md:text-2xl lg:text-4xl">
         You can always reach me via e-mail at
         <a class="underline" :href="email.url">{{ email.label }}</a
         >, as well as through various social media platforms:
@@ -50,11 +49,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.portrait
-  background-image: url(/img/alex.jpg)
-  background-position: 40% 15%
-  width: 100%
-  height: 500px
-  max-height: 50vh
-  background-size: cover
+p
+  @apply mb-4
 </style>

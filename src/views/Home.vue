@@ -1,17 +1,15 @@
 <template>
   <div>
-    <div class="portrait"></div>
     <div class="container mx-auto px-8 max-w-3xl">
-      <section class="mt-12 mb-12">
+      <section class="mt-16 md:mt-6 mb-6">
         <h1
-          class="md:text-5xl text-3xl font-medium leading-none tracking-tight"
+          class="md:text-4xl lg:text-6xl text-4xl font-semibold tracking-tight leading-tight"
         >
-          Alexander Bartolomey is a Containerizer, Kubernetes Enthusiast, YAML
-          Engineer, Musician &amp; Pizza Lover.
+          <b>Alexander Bartolomey</b> is a Frontend Web Developer, passionate containerizer, Kubernetes enthusiast, Musician &amp; Pizza Lover.
         </h1>
       </section>
       <section>
-        <p class="tracking-tight font-medium text-lg">
+        <p class="tracking-tight font-medium text-lg md:text-2xl lg:text-4xl">
           I'm a master's student of Computer Science at RWTH Aachen University,
           Germany, with a focus on both automation and orchestration of modern
           software deployment using containers and Kubernetes. Over the course
@@ -19,20 +17,15 @@
           find more about
           <router-link class="underline" to="/work">here</router-link>.
         </p>
-        <socials></socials>
       </section>
     </div>
   </div>
 </template>
 
 <script>
-import Socials from "@/components/Socials.vue";
-
 export default {
   name: "Home",
-  components: {
-    Socials,
-  },
+  components: {},
   data: () => ({
     socials: [
       {

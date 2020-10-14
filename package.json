@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint --fix"
   },
   "dependencies": {
+    "body-scroll-lock": "^3.1.5",
     "core-js": "^3.6.5",
     "prettier": "^2.1.2",
     "tailwindcss": "^1.8.10",

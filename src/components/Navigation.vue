@@ -1,21 +1,21 @@
 <template>
   <div>
-    <div class="desktop bg-black">
+    <div class="desktop">
       <nav
-        class="container mx-auto hidden md:flex items-center justify-around py-4"
+        class="container mx-auto hidden md:flex items-center justify-around py-8"
       >
         <li
           v-for="link in links"
           :key="link.label"
-          class="list-none text-center md:text-left font-medium text-white md:py-0 py-2"
+          class="list-none text-center md:text-left font-medium md:py-0 py-2"
         >
           <router-link :to="link.to">{{ link.label }}</router-link>
         </li>
       </nav>
     </div>
-    <div class="mobile relative">
+    <div class="mobile relative" ref="nav">
       <button
-        @click="show = true"
+        @click="showNav"
         class="pl-4 pt-4 absolute top-0 left-0 z-10 md:hidden"
       >
         <i class="material-icons">menu</i>
@@ -27,7 +27,7 @@
           class="container mx-auto md:hidden bg-black z-20 fixed top-0"
         >
           <button
-            @click="show = false"
+            @click="hideNav"
             class="absolute top-0 right-0 pr-4 pt-4 text-white focus:outline-none"
           >
             <i class="material-icons">close</i>
@@ -36,8 +36,8 @@
             <li
               v-for="link in links"
               :key="link.label"
-              class="list-none ml-4 text-4xl md:text-left font-medium text-white mb-4"
-              @click="show = false"
+              class="list-none ml-4 text-4xl md:text-left font-semibold text-white mb-4"
+              @click="hideNav"
             >
               <router-link :to="link.to">{{ link.label }}</router-link>
             </li>
@@ -49,6 +49,12 @@
 </template>
 
 <script>
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock";
+
 export default {
   data: () => ({
     show: false,
@@ -67,6 +73,19 @@ export default {
       },
     ],
   }),
+  methods: {
+    hideNav() {
+      this.show = false;
+      enableBodyScroll(this.$refs.nav);
+    },
+    showNav() {
+      this.show = true;
+      setTimeout(() => disableBodyScroll(this.$refs.nav), 200);
+    },
+  },
+  beforeDestroy() {
+    clearAllBodyScrollLocks();
+  },
 };
 </script>
 

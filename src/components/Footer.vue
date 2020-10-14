@@ -1,19 +1,19 @@
 <template>
-  <footer class="bg-black text-white text-xs py-4">
+  <footer class="text-xs py-4">
     <div class="container mx-auto justify-between md:flex py-4 px-8 max-w-3xl">
       <div class="external mb-4 md:mb-0">
-        <h2 class="text-sm font-medium">Navigation</h2>
+        <h2 class="text-sm font-semibold uppercase">Navigation</h2>
         <router-link
           v-for="l in internal"
           :key="l.label"
           :to="l.route"
-          class="block font-medium opacity-50 hover:opacity-100"
+          class="block opacity-50 hover:opacity-100"
           >{{ l.label }}</router-link
         >
       </div>
       <div class="external mb-4 md:mb-0">
-        <h2 class="text-sm font-medium">External Resources</h2>
-        <div v-for="l in external" :key="l.label" class="opacity-50 font-medium hover:opacity-100">
+        <h2 class="text-sm font-semibold uppercase">External Resources</h2>
+        <div v-for="l in external" :key="l.label" class="opacity-50 hover:opacity-100">
           <a :href="l.route">{{ l.label }}</a>
           <a v-if="l.github" :href="l.github.url" class="ml-2">
             <i class="fab fa-github"></i>
@@ -21,8 +21,8 @@
         </div>
       </div>
       <div class="socials md:text-right">
-        <h2 class="text-sm font-medium">Socials</h2>
-        <a class="block opacity-50 font-medium hover:opacity-100" v-for="s in socials" :key="s.label" :href="s.route">
+        <h2 class="text-sm font-semibold uppercase">Socials</h2>
+        <a class="block opacity-50 hover:opacity-100" v-for="s in socials" :key="s.label" :href="s.route">
           {{ s.label }}
         </a>
       </div>
@@ -47,7 +47,7 @@ export default {
         label: "Work",
       },
       {
-        route: "/Contact",
+        route: "/contact",
         label: "Contact",
       },
     ],
@@ -104,4 +104,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h2 {
+  @apply tracking-wide;
+}
+a {
+  @apply tracking-wide;
+}
+</style>
